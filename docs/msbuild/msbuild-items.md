@@ -390,6 +390,8 @@ Output:
 -->
 ```
 
+Because the `KeepDuplicates` attribute considers the metadata of items in addition to the item values, it is important to know what's happening with the metadata. For example, see [Detecting duplicates when using the Metadata item function](./item-functions.md#detecting-duplicate-items-when-using-the-metadata-item-function).
+
 ## Updating metadata on items in an ItemGroup outside of a Target
 
 Items outside of targets can have their existing metadata updated via the `Update` attribute. This attribute is **not** available for items under targets.
@@ -464,7 +466,6 @@ Item1: notebook
 -->
 ```
 
-:::moniker range=">=vs-2019"
 In MSBuild version 16.6 and later, the `Update` attribute supports qualified metadata references to facilitate importing metadata from two or more items.
 
 ```xml
@@ -552,12 +553,11 @@ Remarks:
 - Unqualified metadata (%(M)) binds to the item type being updated (`Item1` in above example). Qualified metadata (`%(Item2.Color)`) binds inside the set of captured matching item types from the Update expression.
 - If an item matches multiple times within and between multiple referenced items:
   - The last occurrence from each referenced item type gets captured (so one captured item per item type).
-  - This matches the behaviour of task item batching under targets.
+  - This matches the behavior of task item batching under targets.
 - Where one can put %() references:
   - Metadata
   - Metadata conditions
 - Metadata name matching is case insensitive.
-:::moniker-end
 
 ## Updating metadata on items in an ItemGroup of a Target
 

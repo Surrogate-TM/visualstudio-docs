@@ -1,7 +1,7 @@
 ---
 title: Compile and build TypeScript code using npm
 description: Learn how to add TypeScript support to your Visual Studio projects by using the Node Package Manager (npm).
-ms.date: 01/10/2022
+ms.date: 01/23/2023
 ms.topic: conceptual
 ms.custom: devdivchpfy22
 author: "mikejo5000"
@@ -17,7 +17,7 @@ ms.workload:
 
  [!INCLUDE [Visual Studio](~/includes/applies-to-version/vs-windows-only.md)]
 
-You can add TypeScript support to your projects using the TypeScript SDK or by using the npm. The TypeScript SDK is available by default in the Visual Studio installer.
+You can add TypeScript support to your projects using the TypeScript SDK or by using npm. The TypeScript SDK is available by default in the Visual Studio installer.
 
 For projects developed in Visual Studio 2019, we encourage you to use the TypeScript npm package for greater portability across different platforms and environments.
 
@@ -98,7 +98,9 @@ The [TypeScript npm package](https://www.npmjs.com/package/typescript) adds Type
 
    For an example of using webpack with React and a webpack configuration file, see [Create a web app with Node.js and React](../javascript/tutorial-nodejs-with-react-and-jsx.md).
 
+   ::: moniker range="vs-2019"
    For an example of using Vue.js with TypeScript, see [Create a Vue.js application](create-application-with-vuejs.md).
+   ::: moniker-end
 
 1. If you need to configure options such as the startup page, path to the Node.js runtime, application port, or runtime arguments, right-click the project node in Solution Explorer, and choose **Properties**.
 
@@ -123,3 +125,7 @@ You can use Task Runner Explorer in Visual Studio to help automate tasks for thi
 
 - [NPM Task Runner](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.NPMTaskRunner) - Adds support for npm scripts defined in *package.json*. Supports yarn.
 - [Webpack Task Runner](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.WebPackTaskRunner) - Adds support for webpack.
+
+## See also
+
+[Properties, React, Angular, Vue](../ide/reference/property-pages-javascript-esproj.md)

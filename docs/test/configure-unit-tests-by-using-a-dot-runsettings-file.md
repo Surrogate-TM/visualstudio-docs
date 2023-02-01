@@ -2,7 +2,7 @@
 title: Configure unit tests with a .runsettings file
 description: Learn how to use the .runsettings file in Visual Studio to configure unit tests that are run from the command line, from the IDE, or in a build workflow.
 ms.custom: SEO-VS-2020
-ms.date: 12/06/2021
+ms.date: 12/13/2022
 ms.topic: conceptual
 ms.author: mikejo
 manager: jmartens
@@ -38,19 +38,7 @@ Run settings files are optional. If you don't require any special configuration,
 
 4. Run the unit tests to use the custom run settings.
 
-::: moniker range="vs-2017"
-
-If you want to turn the custom settings off and on in the IDE, deselect or select the file in the **Test** > **Test Settings** menu.
-
-![Test settings menu with custom settings file in Visual Studio 2017](../test/media/codecoverage-settingsfile.png)
-
-::: moniker-end
-
-::: moniker range=">=vs-2019"
-
 If you want to turn the custom settings off and on in the IDE, deselect or select the file on the **Test** menu.
-
-::: moniker-end
 
 > [!TIP]
 > You can create more than one *.runsettings* file in your solution and select one as the active test settings file as needed.
@@ -58,16 +46,6 @@ If you want to turn the custom settings off and on in the IDE, deselect or selec
 ## Specify a run settings file in the IDE
 
 The methods available depend on your version of Visual Studio.
-
-::: moniker range="vs-2017"
-To specify a run settings file in the IDE, select **Test** > **Test Settings** > **Select Test Settings File**, and then select the *.runsettings* file.
-
-![Select test settings file menu in Visual Studio 2017](media/select-test-settings-file.png)
-
-The file appears on the Test Settings menu, and you can select or deselect it. While selected, the run settings file applies whenever you select **Analyze Code Coverage**.
-::: moniker-end
-
-::: moniker range=">=vs-2019"
 
 ### Visual Studio 2019 version 16.4 and later
 
@@ -129,7 +107,6 @@ To specify a run settings file in the IDE, select **Test** > **Select Settings F
 ![Select test settings file menu in Visual Studio 2019](media/vs-2019/select-settings-file.png)
 
 The file appears on the Test menu, and you can select or deselect it. While selected, the run settings file applies whenever you select **Analyze Code Coverage**.
-::: moniker-end
 
 ## Specify a run settings file from the command line
 
@@ -237,9 +214,39 @@ To customize any other type of diagnostic data adapters, use a [test settings fi
 
 This option can help you isolate a problematic test that causes a test host crash. Running the collector creates an output file (*Sequence.xml*) in *TestResults*, which captures the order of execution of the test before the crash.
 
-```xml
-<DataCollector friendlyName="blame" enabled="True">
-</DataCollector>
+You can run blame in 3 different modes: 
+- Enabling just the sequence file, but not collecting dumps
+- Enabling crash dump, to create a dump when testhost crashes
+- Enabling hang dump, to create a dump when test does not finish before given timeout
+
+The XML configuration should be placed directly into `<RunSettings>` node:
+
+```xml 
+<RunSettings>
+  <RunConfiguration>
+  </RunConfiguration>
+  <LoggerRunSettings>
+    <Loggers>
+      <Logger friendlyName="blame" enabled="True" />
+    </Loggers>
+  </LoggerRunSettings>
+  <DataCollectionRunSettings>
+    <DataCollectors>
+      <!-- Enables blame -->
+      <DataCollector friendlyName="blame" enabled="True">
+        <Configuration>
+          <!-- Enables crash dump, with dump type "Full" or "Mini".
+          Requires ProcDump in PATH for .NET Framework. -->
+          <CollectDump DumpType="Full" />
+          <!-- Enables hang dump or testhost and its child processes 
+          when a test hangs for more than 10 minutes. 
+          Dump type "Full", "Mini" or "None" (just kill the processes). -->
+          <CollectDumpOnTestSessionHang TestTimeout="10min" HangDumpType="Full" />
+        </Configuration>
+      </DataCollector>
+    </DataCollectors>
+  </DataCollectionRunSettings>
+</RunSettings>
 ```
 
 ## TestRunParameters
@@ -247,7 +254,7 @@ This option can help you isolate a problematic test that causes a test host cras
 ```xml
 <TestRunParameters>
     <Parameter name="webAppUrl" value="http://localhost" />
-    <Parameter name="docsUrl" value="https://docs.microsoft.com" />
+    <Parameter name="docsUrl" value="https://learn.microsoft.com" />
 </TestRunParameters>
 ```
 
@@ -260,7 +267,7 @@ public TestContext TestContext { get; set; }
 [TestMethod] // [Test] for NUnit
 public void HomePageTest()
 {
-    string _appURL = TestContext.Properties["webAppUrl"];
+    string _appUrl = TestContext.Properties["webAppUrl"];
 }
 ```
 
@@ -311,14 +318,18 @@ These settings are specific to the test adapter that runs test methods that have
 |Configuration|Default|Values|
 |-|-|-|
 |**ForcedLegacyMode**|false|In Visual Studio 2012, the MSTest adapter was optimized to make it faster and more scalable. Some behavior, such as the order in which tests are run, might not be exactly as it was in previous editions of Visual Studio. Set this value to **true** to use the older test adapter.<br /><br />For example, you might use this setting if you have an *app.config* file specified for a unit test.<br /><br />We recommend that you consider refactoring your tests to allow you to use the newer adapter.|
-|**IgnoreTestImpact**|false|The test impact feature prioritizes tests that are affected by recent changes, when run in MSTest or from Microsoft Test Manager (deprecated in Visual Studio 2017). This setting deactivates the feature. For more information, see [Which tests should be run since a previous build](/previous-versions/dd286589(v=vs.140)).|
 |**SettingsFile**||You can specify a test settings file to use with the MSTest adapter here. You can also specify a test settings file [from the settings menu](#specify-a-run-settings-file-in-the-ide).<br /><br />If you specify this value, you must also set the **ForcedLegacyMode** to **true**.<br /><br />`<ForcedLegacyMode>true</ForcedLegacyMode>`|
-|**KeepExecutorAliveAfterLegacyRun**|false|After a test run is completed, MSTest is shut down. Any process that is launched as part of the test is also killed. If you want to keep the test executor alive, set the value to **true**. For example, you could use this setting to keep the browser running between coded UI tests.|
 |**DeploymentEnabled**|true|If you set the value to **false**, deployment items that you've specified in your test method aren't copied to the deployment directory.|
 |**CaptureTraceOutput**|true|You can write to the debug trace from your test method using <xref:System.Diagnostics.Trace.WriteLine%2A?displayProperty=nameWithType>.|
+|**EnableBaseClassTestMethodsFromOtherAssemblies**|true|A value indicating whether to enable discovery of test methods from base classes in a different assembly from the inheriting test class.|
+|**ClassCleanupLifecycle**|EndOfClass|If you want the class cleanup to occur at the end of assembly, set this to **EndOfAssembly**.|
+|**MapNotRunnableToFailed**|true|A value indicating whether a not runnable result will be mapped to failed test.|
+|**Parallelize**||You will need to use it to set the parallelization settings:<br /><br />**Workers**: The number of threads/workers to be used for parallelization, which is by default **the number of processors on the current machine**.<br /><br />**SCOPE**: The scope of parallelization. You can set it to **MethodLevel**. By default, it's **ClassLevel**.<br /><br />`<Parallelize><Workers>32</Workers><Scope>MethodLevel</Scope></Parallelize>`|
+|**TestTimeout**|0|Gets specified global test case timeout.|
+|**TreatClassAndAssemblyCleanupWarningsAsErrors**|false|To see your failures in class cleanups as errors, set this value to **true**.|
+|**DeployTestSourceDependencies**|true|A value indicating whether the test source references are to deployed.|
 |**DeleteDeploymentDirectoryAfterTestRunIsComplete**|true|To retain the deployment directory after a test run, set this value to **false**.|
 |**MapInconclusiveToFailed**|false|If a test completes with an inconclusive status, it is mapped to the skipped status in **Test Explorer**. If you want inconclusive tests to be shown as failed, set the value to **true**.|
-|**InProcMode**|false|If you want your tests to be run in the same process as the MSTest adapter, set this value to **true**. This setting provides a minor performance gain. But if a test exits with an exception, the remaining tests don't run.|
 |**AssemblyResolution**|false|You can specify paths to additional assemblies when finding and running unit tests. For example, use these paths for dependency assemblies that aren't in the same directory as the test assembly. To specify a path, use a **Directory Path** element. Paths can include environment variables.<br /><br />`<AssemblyResolution>  <Directory path="D:\myfolder\bin\" includeSubDirectories="false"/> </AssemblyResolution>`|
 
 ## Example *.runsettings* file

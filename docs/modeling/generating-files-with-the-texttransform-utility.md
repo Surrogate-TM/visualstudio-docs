@@ -25,7 +25,7 @@ TextTransform.exe is a command-line tool that you can use to transform a text te
 
 TextTransform.exe is located in the following directory:
 
-::: moniker range=">=vs-2019"
+::: moniker range="=vs-2019"
 
 **\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE**
 
@@ -37,21 +37,15 @@ for Enterprise edition.
 
 ::: moniker-end
 
-::: moniker range="vs-2017"
+::: moniker range=">vs-2019"
 
-**\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE**
+**\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE**
 
 for Professional edition, or
 
-**\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE**
+**\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE**
 
 for Enterprise edition.
-
-In previous versions of Visual Studio, the file is found in the following location:
-
-**\Program Files (x86)\Common Files\Microsoft Shared\TextTemplating\{version}**
-
-where {version} depends on which previous version is installed.
 
 ::: moniker-end
 

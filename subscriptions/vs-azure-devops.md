@@ -4,18 +4,18 @@ author: evanwindom
 ms.author: amast
 manager: shve
 ms.assetid: fe826200-9600-4b29-a64e-0d66ba3caf3d
-ms.date: 05/27/2022
+ms.date: 07/21/2022
 ms.topic: conceptual
 description:  Understand how you can use Azure DevOps as a Visual Studio subscriber.
 ---
 # Azure DevOps for Visual Studio subscribers
 
-As an active Visual Studio subscriber, you can use a range of features in Azure DevOps that are included with your subscription. You'll be able to use these same features in each Azure DevOps organization in which you are a member, whether you created the organization or were added by someone else.
+As an active Visual Studio subscriber, you can use a range of features in Azure DevOps that are included with your subscription. You'll be able to use these same features in each Azure DevOps organization in which you're a member, whether you created the organization or were added by someone else.
 
 ## Sign in
 
    > [!div class="mx-imgBorder"]
-   > ![Azure DevOps Tile](_img/vs-azure-devops/vs-azure-devops-tile.png "Select 'Get started' to sign in to Azure DevOps.")
+   > ![Azure DevOps Tile](_img/vs-azure-devops/vs-azure-devops-tile.png "Screenshot of the Azure DevOps tile.  The Get started button is highlighted.")
 
    
 When you sign in to Azure DevOps using either the identity that you used for activating your Visual Studio subscription or your [alternate identity](vs-alternate-identity.md), we recognize this automatically.  This way you can also add the work or school account you use when logging into Visual Studio, Microsoft 365, or your corporate or school network.  You'll have access to Azure DevOps using both your personal account and your work or school account.
@@ -34,7 +34,7 @@ When you sign in to Azure DevOps using either the identity that you used for act
 | MSDN Platforms (Standard) | VL, Retail | Azure Boards & Repos (Basic<sup>2</sup>), Azure Test Plans | Yes |
 ||
 
-<sup>1</sup>  *Includes:  Not for Resale (NFR), Most Valuable Professional (MVP), Regional Director (RD), Visual Studio Industry Partner (VSIP), Microsoft Partner Network (Enterprise), BizSpark, MCT Software & Services Developer, FTE.
+<sup>1</sup>  *Includes:  Not for Resale (NFR - including ISV, Alumni and others), Most Valuable Professional (MVP), Regional Director (RD), Visual Studio Industry Partner (VSIP), Microsoft Partner Network (Enterprise), BizSpark, MCT Software & Services Developer, FTE.
   Excludes: MCT Software & Services, Imagine.*
 
 <sup>2</sup> *Basic plan includes defining release pipelines and multi-stage continuous deployment (CD) pipelines, and using approvals and gates to control deployments; when the Free access to Pipelines Preview feature is enabled, Stakeholders gain access to all Azure Pipelines features.*

@@ -42,17 +42,7 @@ Create a code map to visually trace the call stack while you're debugging. You c
 
  You'll need:
 
- ::: moniker range="vs-2017"
-
-- [Visual Studio Enterprise](https://visualstudio.microsoft.com/vs/older-downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=vs+2017+download)
-
-::: moniker-end
-
-::: moniker range=">=vs-2019"
-
 - [Visual Studio Enterprise](https://visualstudio.microsoft.com/downloads)
-
-::: moniker-end
 
 - Code that you can debug, such as Visual C#, Visual Basic, C++, JavaScript, or X++
 

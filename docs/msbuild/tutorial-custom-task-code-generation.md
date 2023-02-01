@@ -156,7 +156,6 @@ Project "S:\work\msbuild-examples\custom-task-code-generation\AppSettingStrongly
 S:\work\msbuild-examples\custom-task-code-generation\AppSettingStronglyTyped\AppSettingStronglyTyped.Test\bin\Debug\net6.0\Resources\error-prop.setting(1): error APPS0001: Incorrect line format. Valid format prop:type:defaultvalue [S:\work\msbuild-examples\custom-task-code-generation\AppSettingStronglyTyped\AppSettingStronglyTyped.Test\bin\Debug\net6.0\Resources\testscript-fail.msbuild]
 Done Building Project "S:\work\msbuild-examples\custom-task-code-generation\AppSettingStronglyTyped\AppSettingStronglyTyped.Test\bin\Debug\net6.0\Resources\testscript-fail.msbuild" (default targets) -- FAILED.
 
-
 Build FAILED.
 
 "S:\work\msbuild-examples\custom-task-code-generation\AppSettingStronglyTyped\AppSettingStronglyTyped.Test\bin\Debug\net6.0\Resources\testscript-fail.msbuild" (default target) (1) ->
@@ -170,13 +169,13 @@ Build FAILED.
 When you catch exceptions in your task, use the <xref:Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorFromException%2A?displayProperty=nameWithType> method. This will improve the error output, for example by obtaining the call stack where the exception was thrown.
 
 ```csharp
-    catch (Exception ex)
-    {
-		// This logging helper method is designed to capture and display information
-		// from arbitrary exceptions in a standard way.
-		Log.LogErrorFromException(ex, showStackTrace: true);
-		return false;
-	}
+catch (Exception ex)
+{
+	// This logging helper method is designed to capture and display information
+	// from arbitrary exceptions in a standard way.
+	Log.LogErrorFromException(ex, showStackTrace: true);
+	return false;
+}
 ```
 
 The implementation of the other methods that use these inputs to build the text for the generated code file isn't shown here; see [AppSettingStronglyTyped.cs](https://github.com/v-fearam/msbuild-examples/blob/main/custom-task-code-generation/AppSettingStronglyTyped/AppSettingStronglyTyped/AppSettingStronglyTyped.cs) in the sample repo.
@@ -208,7 +207,7 @@ In this section, you'll create a standard .NET Core Console App that uses the ta
 
 	```xml
 	<Project Sdk="Microsoft.NET.Sdk">
-		<UsingTask TaskName="AppSettingStronglyTyped.AppSettingStronglyTyped" AssemblyFile="..\.   .\AppSettingStronglyTyped\AppSettingStronglyTyped\bin\Debug\netstandard2.0\AppSettingStronglyTyped.dll"/>
+		<UsingTask TaskName="AppSettingStronglyTyped.AppSettingStronglyTyped" AssemblyFile="..\..\AppSettingStronglyTyped\AppSettingStronglyTyped\bin\Debug\netstandard2.0\AppSettingStronglyTyped.dll"/>
 
 		<PropertyGroup>
 			<OutputType>Exe</OutputType>
@@ -217,25 +216,25 @@ In this section, you'll create a standard .NET Core Console App that uses the ta
 			<SettingClass>MySetting</SettingClass>
 			<SettingNamespace>MSBuildConsoleExample</SettingNamespace>
 			<SettingExtensionFile>mysettings</SettingExtensionFile>
-	 </PropertyGroup>
+		</PropertyGroup>
 
-	 <ItemGroup>
-		 <SettingFiles Include="$(RootFolder)\*.mysettings" />
-	 </ItemGroup>`
+		<ItemGroup>
+			<SettingFiles Include="$(RootFolder)\*.mysettings" />
+		</ItemGroup>
 
-	 <Target Name="GenerateSetting" BeforeTargets="CoreCompile" Inputs="@(SettingFiles)" Outputs="$(RootFolder)\$(SettingClass).generated.cs">
-		 <AppSettingStronglyTyped SettingClassName="$(SettingClass)" SettingNamespaceName="$(SettingNamespace)" SettingFiles="@(SettingFiles)">
-			 <Output TaskParameter="ClassNameFile" PropertyName="SettingClassFileName" />
-		 </AppSettingStronglyTyped>
-		 <ItemGroup>
-			 <Compile Remove="$(SettingClassFileName)" />
-			 <Compile Include="$(SettingClassFileName)" />
-		 </ItemGroup>
-	 </Target>
+		<Target Name="GenerateSetting" BeforeTargets="CoreCompile" Inputs="@(SettingFiles)" Outputs="$(RootFolder)\$(SettingClass).generated.cs">
+			<AppSettingStronglyTyped SettingClassName="$(SettingClass)" SettingNamespaceName="$(SettingNamespace)" SettingFiles="@(SettingFiles)">
+			<Output TaskParameter="ClassNameFile" PropertyName="SettingClassFileName" />
+			</AppSettingStronglyTyped>
+			<ItemGroup>
+				<Compile Remove="$(SettingClassFileName)" />
+				<Compile Include="$(SettingClassFileName)" />
+			</ItemGroup>
+		</Target>
 
-	 <Target Name="ForceReGenerateOnRebuild" AfterTargets="CoreClean">
-		 <Delete Files="$(RootFolder)\$(SettingClass).generated.cs" />
-	 </Target>
+		<Target Name="ForceReGenerateOnRebuild" AfterTargets="CoreClean">
+			<Delete Files="$(RootFolder)\$(SettingClass).generated.cs" />
+		</Target>
 	</Project>
 	```
 
@@ -265,10 +264,10 @@ In this section, you'll create a standard .NET Core Console App that uses the ta
 1. Open *Program.cs* and change the hardcoded 'Hello World!!' to the user-defined constant:
 
 	```csharp
-		  static void Main(string[] args)
-		  {
-				Console.WriteLine(MySetting.Greeting);
-		  }
+	static void Main(string[] args)
+	{
+		Console.WriteLine(MySetting.Greeting);
+	}
 	```
 
 Execute the program; it will print the greeting from the generated class.
@@ -421,7 +420,7 @@ As discussed above, this dependency will be provided by MSBuild itself at runtim
 
 #### Generate and embed a deps.json file
 
-The deps.json file can be used by MSBuild to ensure the correct versions of your dependencies are loaded. You'll nee to add some MSBuild properties to cause the file to be generated, since it is not generated by default for libraries. Then, add a target to include it in our package output, similarly to how you did for our package dependencies.
+The deps.json file can be used by MSBuild to ensure the correct versions of your dependencies are loaded. You'll need to add some MSBuild properties to cause the file to be generated, since it is not generated by default for libraries. Then, add a target to include it in our package output, similarly to how you did for our package dependencies.
 
 ```xml
 <PropertyGroup>
@@ -480,17 +479,14 @@ In this section, you'll wire up the task implementation in `.props` and `.target
 	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<!--defining properties interesting for my task-->
 	<PropertyGroup>
-		<!--default directory where the .dll was publich inside a nuget package-->
-		<taskForldername>lib</taskForldername>
-		<taskFramework>netstandard2.0</taskFramework>
 		<!--The folder where the custom task will be present. It points to inside the nuget package. -->
-		<CustomTasksFolder>$(MSBuildThisFileDirectory)..\$(taskForldername)\$(taskFramework)</CustomTasksFolder>
+		<_AppSettingsStronglyTyped_TaskFolder>$(MSBuildThisFileDirectory)..\tasks\netstandard2.0</_AppSettingsStronglyTyped_TaskFolder>
 		<!--Reference to the assembly which contains the MSBuild Task-->
-		<CustomTasksAssembly>$(CustomTasksFolder)\$(MSBuildThisFileName).dll</CustomTasksAssembly>
+		<CustomTasksAssembly>$(_AppSettingsStronglyTyped_TaskFolder)\$(MSBuildThisFileName).dll</CustomTasksAssembly>
 	</PropertyGroup>
 
 	<!--Register our custom task-->
-	<UsingTask TaskName="$(MSBuildThisFileName).$(MSBuildThisFileName)" AssemblyFile="$(CustomTasksAssembly)"/>
+	<UsingTask TaskName="$(MSBuildThisFileName).AppSettingStronglyTyped" AssemblyFile="$(CustomTasksAssembly)"/>
 
 	<!--Task parameters default values, this can be overridden-->
 	<PropertyGroup>
@@ -533,7 +529,7 @@ In this section, you'll wire up the task implementation in `.props` and `.target
 	</Project>
 	```
 
-	The first step is the creation of an [InputGroup](msbuild-items.md), which represents the text files (it could be more than one) to read and it will be some of our task parameter. There are default values for the location and the extension where we look for, but you can override the values that define the properties in the client MSBuild project file.
+	The first step is the creation of an [ItemGroup](msbuild-items.md), which represents the text files (it could be more than one) to read and it will be some of our task parameter. There are default values for the location and the extension where we look for, but you can override the values that define the properties in the client MSBuild project file.
 
 	Then define two [MSBuild targets](msbuild-targets.md). We [extend the MSBuild process](how-to-extend-the-visual-studio-build-process.md), overriding predefined targets:
 
@@ -553,6 +549,39 @@ dotnet pack -o .
 Congratulations! You've generated a NuGet package named *\AppSettingStronglyTyped\AppSettingStronglyTyped\AppSettingStronglyTyped.1.0.0.nupkg*.
 
 The package has an extension `.nupkg` and is a compressed zip file. You can open it with a zip tool. The `.target` and `.props` files are in the `build` folder. The `.dll` file is in the `lib\netstandard2.0\` folder. The `AppSettingStronglyTyped.nuspec` file is at the root level.
+
+## (Optional) Support multitargeting
+
+You should consider supporting both `Full` (.NET Framework) and `Core` (including .NET 5 and later) MSBuild distributions to support the broadest possible user base.
+
+For 'normal' .NET SDK projects, multitargeting means setting multiple TargetFrameworks in your project file. When you do this, builds will be triggered for both TargetFrameworkMonikers, and the overall results can be packaged as a single artifact.
+
+That's not the full story for MSBuild. MSBuild has two primary shipping vehicles: Visual Studio and the .NET SDK. These are very different runtime environments; one runs on the .NET Framework runtime, and other runs on the CoreCLR. What this means is that while your code can target netstandard2.0, your task logic may have differences based on what MSBuild runtime type is currently in use. Practically, since there are so many new APIs in .NET 5.0 and up, it makes sense to both multitarget your MSBuild task source code for multiple TargetFrameworkMonikers as well as multitarget your MSBuild target logic for multiple MSBuild runtime types.
+
+### Changes required to multitarget
+
+To target multiple TargetFrameworkMonikers (TFM):
+
+1. Change your project file to use the `net472` and `net6.0` TFMs (the latter may change based on which SDK level you want to target). You might want to target `netcoreapp3.1` until .NET Core 3.1 goes out of support. When you do this, the package folder structure changes from `tasks/` to `tasks/<TFM>/`.
+
+   ```xml
+   <TargetFrameworks>net472;net6.0</TargetFrameworks>
+   ```
+
+2. Update your `.targets` files to use the correct TFM to load your tasks. The TFM required will change based on what .NET TFM you chose above, but for a project targeting `net472` and `net6.0`, you would have a property like:
+
+```xml
+<AppSettingStronglyTyped_TFM Condition=" '$(MSBuildRuntimeType)' != 'Core' ">net472</AppSettingStronglyTyped_TFM>
+<AppSettingStronglyTyped_TFM Condition=" '$(MSBuildRuntimeType)' == 'Core' ">net6.0</AppSettingStronglyTyped_TFM>
+```
+
+This code uses the `MSBuildRuntimeType` property as a proxy for the active hosting environment. Once this property is set, you can use it in the `UsingTask` to load the correct `AssemblyFile`:
+
+```xml
+<UsingTask
+    AssemblyFile="$(MSBuildThisFileDirectory)../tasks/$(AppSettingStronglyTyped_TFM)/AppSettingStronglyTyped.dll"
+    TaskName="AppSettingStrongTyped.AppSettingStronglyTyped" />
+```
 
 ## Next steps
 

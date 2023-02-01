@@ -30,8 +30,6 @@ To follow this walkthrough, you must install the Visual Studio SDK. For more inf
 
    For more information, see [Create an extension with an editor item template](../extensibility/creating-an-extension-with-an-editor-item-template.md).
 
-::: moniker range=">=vs-2019"
-
 2. Add the following assembly references to the project:
 
     - Microsoft.VisualStudio.Shell.Framework
@@ -58,36 +56,6 @@ To follow this walkthrough, you must install the Visual Studio SDK. For more inf
    DTE dte = (DTE)ServiceProvider.GetService(typeof(DTE));
    ```
 
-::: moniker-end
-
-::: moniker range="vs-2017"
-
-2. Add the following assembly references to the project:
-
-   - EnvDTE
-   - Microsoft.VisualStudio.Shell.Framework
-
-3. In the *DTETestProvider.cs* file, add the following `using` directives:
-
-    ```csharp
-    using EnvDTE;
-    using Microsoft.VisualStudio.Shell;
-    ```
-
-4. In the `DTETestProvider` class, import an <xref:Microsoft.VisualStudio.Shell.SVsServiceProvider>.
-
-    ```csharp
-    [Import]
-    internal SVsServiceProvider ServiceProvider = null;
-    ```
-
-5. In the `GetClassifier()` method, add the following code before the `return` statement:
-
-    ```csharp
-   DTE dte = (DTE)ServiceProvider.GetService(typeof(DTE));
-   ```
-
-::: moniker-end
 
 ## See also
 

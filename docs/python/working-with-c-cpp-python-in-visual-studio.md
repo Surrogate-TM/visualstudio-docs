@@ -4,8 +4,8 @@ description: This article walks you through how to create a C++ extension for Py
 ms.custom: devdivchpfy22
 ms.date: 02/25/2022
 ms.topic: how-to
-author: rjmolyneaux
-ms.author: rmolyneaux
+author: cwebster-99
+ms.author: cowebster
 manager: jmartens
 ms.technology: vs-python
 
@@ -134,8 +134,6 @@ Follow the instructions in this section to create two identical C++ projects, *s
 
 1. Set the properties as described in the following table:
 
-    ::: moniker range=">=vs-2019"
-
     | Tab | Property | Value |
     | --- | --- | --- |
     | **General** | **Target Name** | Specify the name of the module to refer to it from Python in `from...import` statements. You use this same name in the C++ code when you define the module for Python. To use the name of the project as the module name, leave the default value of **$\<ProjectName>**.  For `python_d.exe`, add `_d` to the end of the name. |
@@ -147,22 +145,6 @@ Follow the instructions in this section to create two identical C++ projects, *s
     | **Linker** > **General** | **Additional Library Directories** | Add the Python *libs* folder that contains *.lib* files, as appropriate for your installation (for example, *c:\Python36\libs*). Be sure to point to the *libs* folder that contains *.lib* files, and *not* the *Lib* folder that contains *.py* files. |
     | | |
 
-    ::: moniker-end
-
-    ::: moniker range="=vs-2017"
-
-    | Tab | Property | Value |
-    | --- | --- | --- |
-    | **General** | **General** > **Target Name** | Specify the name of the module to refer to it from Python in `from...import` statements. You use this same name in the C++ code when you define the module for Python. To use the name of the project as the module name, leave the default value of **$\<ProjectName>**. For `python_d.exe`, add `_d` to the end of the name. |
-    | | **General** > **Target Extension** | **.pyd** |
-    | | **Project Defaults** > **Configuration Type** | **Dynamic Library (.dll)** |
-    | **C/C++** > **General** | **Additional Include Directories** | Add the Python *include* folder, as appropriate for your installation (for example, *c:\Python36\include*).  |
-    | **C/C++** > **Preprocessor** | **Preprocessor Definitions** | If it's present, change the **_DEBUG** value to **NDEBUG** to match the non-debug version of `CPython`. When you're using `python_d.exe`, leave this value unchanged. |
-    | **C/C++** > **Code Generation** | **Runtime Library** | **Multi-threaded DLL (/MD)** to match the non-debug version of `CPython`. When you're using `python_d.exe`, leave this value unchanged. |
-    | **Linker** > **General** | **Additional Library Directories** | Add the Python *libs* folder that contains *.lib* files, as appropriate for your installation (for example, *c:\Python36\libs*). Be sure to point to the *libs* folder that contains *.lib* files, and *not* the *Lib* folder that contains *.py* files. |
-    | | |
-
-    ::: moniker-end
     
     > [!NOTE]
     > If the **C/C++** tab isn't displayed in the project properties, the project contains no files that identifies as C/C++ source files. This condition can occur if you create a source file without a *.c* or *.cpp* file extension. 
@@ -407,7 +389,6 @@ You can make the DLL available to Python in any of several ways. Here are two ap
     
         > [!Tip]
         > If the installation fails because of a permission error, add *--user* to the end, and try the command again.
-
 
 ### Call the DLL from Python
 

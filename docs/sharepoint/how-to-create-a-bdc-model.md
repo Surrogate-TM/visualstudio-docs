@@ -26,25 +26,12 @@ ms.workload:
 ## To create a BDC project
 
 1. On the menu bar, choose **File** > **New** > **Project**.
-::: moniker range="=vs-2017"
-   > [!NOTE]
-   > If your IDE is set to use Visual Basic development settings, choose **File** > **New Project**.
 
-  The **New Project** dialog box opens.
-
-2. Under either **Visual Basic** or **Visual C#**, choose **Office/SharePoint**, **SharePoint Solutions**.
-
-3. In the **Templates** pane, choose the **SharePoint 2013 - Empty Project** item, and then choose the **OK** button.
-
-     The **SharePoint Customization Wizard** opens.
-::: moniker-end
-::: moniker range=">=vs-2019"
 2. On the **Create a New Project** dialog select the *SharePoint Empty Project** for the particular version of SharePoint you have installed. For example, if you have SharePoint 2019 install select the **SharePoint 2019 - Empty Project** template.
     [!INCLUDE[new-project-dialog-search](../sharepoint/includes/new-project-dialog-search-md.md)]
 
 3. Change the name of the project if you would like to, and then choose the **Create** button.
 
-::: moniker-end
 4. On the **Specify the site and security level for debugging** page, specify the URL of a SharePoint site on the local computer, choose the **Deploy as farm solution** option button, and then choose the **Finish** button.
 
      You will test the model on the SharePoint site that you specified.

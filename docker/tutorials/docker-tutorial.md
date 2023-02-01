@@ -1,8 +1,8 @@
 ---
 title: "Tutorial: Get started with Docker apps in Visual Studio Code"
 description: In this tutorial, learn how to start using Docker with VS Code. Create and deploy apps to Azure.
-author: ucheNkadiCode
-ms.author: uchen
+author: ghogen
+ms.author: ghogen
 ms.prod: vs-code
 ms.topic: tutorial 
 ms.date: 03/04/2022
@@ -144,6 +144,7 @@ A Dockerfile is a text-based script of instructions that is used to create a con
 
    ```dockerfile
    FROM node:12-alpine
+   RUN apk add --no-cache python2 g++ make
    WORKDIR /app
    COPY . .
    RUN yarn install --production
@@ -217,7 +218,7 @@ Now, let's make a few changes and learn about managing your containers.
     Save your change.
 
 1. Stop and remove the current version of the container.
-   More than one contain can't use the same port.
+   More than one container can't use the same port.
 
    Right-click the **getting-started** container and select **Remove**.
 

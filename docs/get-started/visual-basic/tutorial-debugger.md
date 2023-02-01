@@ -34,22 +34,9 @@ In this tutorial, you will:
 
 ## Prerequisites
 
-::: moniker range=">=vs-2019"
-
 You must have Visual Studio 2019 installed and the **.NET Core cross-platform development** workload.
 
-::: moniker-end
-::: moniker range="vs-2017"
 
-You must have Visual Studio 2017 installed and the **.NET Core cross-platform development** workload.
-
-::: moniker-end
-
-::: moniker range="vs-2017"
-
-If you haven't already installed Visual Studio, go to the [Visual Studio downloads](https://visualstudio.microsoft.com/vs/older-downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=vs+2017+download) page to install it for free.
-
-::: moniker-end
 
 ::: moniker range="vs-2019"
 
@@ -70,20 +57,6 @@ If you need to install the workload but already have Visual Studio, go to **Tool
 ## Create a project
 
 First, you'll create a .NET Core console application project. The project type comes with all the template files you'll need, before you've even added anything!
-
-::: moniker range="vs-2017"
-
-1. Open Visual Studio 2017.
-
-2. From the top menu bar, choose **File** > **New** > **Project**.
-
-3. In the **New Project** dialog box in the left pane, expand **Visual Basic**, and then choose **.NET Core**. In the middle pane, choose **Console App (.NET Core)**. Then name the project *get-started-debugging*.
-
-     If you don't see the **Console App (.NET Core)** project template, choose the **Open Visual Studio Installer** link in the left pane of the **New Project** dialog box.
-
-     The Visual Studio Installer launches. Choose the **.NET Core cross-platform development** workload, and then choose **Modify**.
-
-::: moniker-end
 
 ::: moniker range="vs-2019"
 

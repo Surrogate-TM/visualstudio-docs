@@ -116,19 +116,14 @@ The first step is to create the setup project.
 
 1. Open the Office AddIn Project you want to deploy. For this example, we're using an Excel Add-in called ExcelAddIn.
 2. With the Office Project Open, on the **File** menu, expand **Add** and click **New Project** to add a new project.
-::: moniker range="=vs-2017"
-3. In the **Add New Project** dialog, expand **Other Project Types** in **the Project types** pane, then expand **Setup and Deployment** and then select **Visual Studio Installer**.
-4. In the **Templates** pane, select **Setup Project** from the **Visual Studio installed** templates group.
-::: moniker-end
+
 ::: moniker range="=vs-2019"
 3. On the **Add a New Project** dialog, select the **Setup Project** template.
 4. Click **Next**.
 ::: moniker-end
 
 5. In the **Name** box, type **OfficeAddInSetup**.
-::: moniker range="=vs-2017"
-6. Click **Open** to create the new setup project.
-::: moniker-end
+
 ::: moniker range="=vs-2019"
 6. Click **Create** to create the new setup project.
 ::: moniker-end
@@ -204,7 +199,7 @@ Microsoft Office locates Add-ins by using registry keys. The keys in the HKEY\_C
 2. Expand **View**.
 3. Click **Registry** to open the registry editor window.
 4. In the **Registry(OfficeAddInSetup)** editor, expand **HKEY\_LOCAL\_MACHINE** and then **Software**.
-5. Delete the **\[Manufacturer\]**?key found under **HKEY\_LOCAL\_MACHINE\\Software**.
+5. Delete the **\[Manufacturer\]** key found under **HKEY\_LOCAL\_MACHINE\\Software**.
 6. Expand **HKEY\_CURRENT\_USER** and then **Software**.
 7. Delete the **\[Manufacturer\]** key found under **HKEY\_CURRENT\_USER\\Software**.
 8. To add registry keys for the add-in installation right-click the **User/Machine Hive** key, select **New Key**. Use the text **Software** for the name of the new key. Right-click on the newly created **Software** key and create a new key with the text **Microsoft**.

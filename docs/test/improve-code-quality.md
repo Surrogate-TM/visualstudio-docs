@@ -27,13 +27,7 @@ Visual Studio testing tools can help you and your team develop and sustain high 
 
 The **Test Explorer** window helps developers create, manage, and run unit tests. You can use the Microsoft unit test framework or one of several third-party and open source frameworks.
 
-::: moniker range="vs-2017"
-![Visual Studio Test Explorer](media/devtest-testexplorer.png)
-::: moniker-end
-
-::: moniker range=">=vs-2019"
 ![Visual Studio Test Explorer 16.2](media/vs-2019/test-explorer-16-2.PNG)
-::: moniker-end
 
 * [Get started with unit testing](unit-test-your-code.md)
 * [Unit test basics](unit-test-basics.md)
@@ -79,6 +73,7 @@ Code coverage is an option when you run test methods using Test Explorer. The re
 * [Use code coverage to determine how much code is being tested](using-code-coverage-to-determine-how-much-code-is-being-tested.md)
 * [Unit testing, code coverage and code clone analysis with Visual Studio (Lab)](https://azuredevopslabs.com/labs/devopsserver/liveunittesting)
 * [Customize code coverage analysis](customizing-code-coverage-analysis.md)
+* [Microsoft.CodeCoverage.Console tool](microsoft-code-coverage-console-tool.md)
 
 ## Microsoft Fakes
 
@@ -113,5 +108,5 @@ Whether you choose best-of-breed Coded UI Tests or generic browser-based UI test
 ## Related scenarios
 
 * [Exploratory & manual testing (Azure Test Plans)](/azure/devops/test/index?view=vsts&preserve-view=true)
-* [Load testing (Azure Test Plans)](/azure/load-testing/)
+* [Load testing (Azure Load Testing)](/azure/load-testing/)
 * [Code analysis tools](../code-quality/code-analysis-for-managed-code-overview.md)

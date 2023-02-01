@@ -1,7 +1,7 @@
 ---
 title: "Write and debug code by using Hot Reload"
 description: "Hot Reload, similar to edit and continue, allows you to make changes to your code while running apps"
-ms.date: 11/05/2021
+ms.date: 11/22/2022
 ms.topic: conceptual
 helpviewer_keywords:
   - "Hot reload"
@@ -109,7 +109,7 @@ If you target .NET 6, you continue to get improvements in upcoming Visual Studio
 
 ## Supported ASP.NET Core Scenarios
 
-The basic Hot Reload experience is supported for many ASP.NET scenarios. The most widely available feature is the ability to change code-behind and other .NET class files for most types of web applications. This feature works while using the Visual Studio debugger and is present anywhere Edit and Continue was previously available.
+The basic Hot Reload experience is supported for many ASP.NET scenarios. The most widely available feature is the ability to change code-behind and other .NET class files for most types of web applications. This feature works while using the Visual Studio debugger and is present anywhere Edit and Continue was previously available. For more specific guidance, see [.NET Hot Reload support for ASP.NET Core](/aspnet/core/test/hot-reload).
 
 For ASP.NET Core developers who are targeting .NET 6, there are additional capabilities not available for lower versions of .NET. These capabilities include:
 
@@ -122,15 +122,7 @@ For ASP.NET Core developers who are targeting .NET 6, there are additional capab
 
 The .NET Hot Reload experience is powered by the [Edit and Continue](../debugger/edit-and-continue-visual-csharp.md) mechanism. Improvements include support for additional types of edits that go beyond what was originally possible in older versions of Visual Studio. Improvements include:
 
-* Adding, updating, or deleting Custom Attributes
-* Adding or updating Record structs
-* Adding or updating #line directives
-* Editing Switch expressions
-* Editing files with #line directives, including changes to the directive itself
-* Editing top-level statements
-* Editing code that uses any of the new C# 10 features, such as global using directives, file scoped namespaces, improved lambdas, and parameter-less struct constructors
-* Renaming Lambda parameters
-* Renaming parameters of existing methods
+[!INCLUDE [dotnet-hot-reload-and-edit-continue](../debugger/includes/dotnet-hot-reload-and-edit-continue.md)]
 
 The preceding improvements are available to both Hot Reload and the Edit and Continue experiences.
 
@@ -196,6 +188,10 @@ If you select the **Always rebuild** option in the dialog box, you won't see the
 
 > [!NOTE]
 > In the first release of Visual Studio (version 17.0) the standard Edit and Continue dialog is still shown when using Hot Reload with the debugger. This was a bug and has been resolved starting with 17.1 Preview 2 release.
+
+## Troubleshooting
+
+For ASP.NET Core, if you're using response compression, see the information on [response compression](/dotnet/core/tools/dotnet-watch#description) in `dotnet watch`.
 
 ## See also
 

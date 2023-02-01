@@ -42,18 +42,6 @@ In Visual Studio 2017 and later, Google Test is integrated into the Visual Studi
 
 ::: moniker-end
 
-::: moniker range="vs-2017"
-
-## Add a Google Test project in Visual Studio 2017
-
-1. In **Solution Explorer**, right-click on the solution node and choose **Add** > **New Project**.
-2. In the left pane, choose **Visual C++** > **Test** and then choose **Google Test Project** in the center pane.
-3. Give the test project a name and choose **OK**.
-
-![New Google Test Project](media/cpp-gtest-new-project.png)
-
-::: moniker-end
-
 ## Configure the test project
 
 In the **Test Project Configuration** dialog that is displayed, you can choose the project you want to test. When you choose a project, Visual Studio adds a reference to the selected project. If you choose no project, then you need to manually add references to the project(s) you want to test. When choosing between static and dynamic linking to the Google Test binaries, the considerations are the same as for any C++ program. For more information, see [DLLs in Visual C++](/cpp/build/dlls-in-visual-cpp).

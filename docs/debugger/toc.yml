@@ -74,8 +74,8 @@
       href: view-data-values-in-data-tips-in-the-code-editor.md
     - name: View string values in a visualizer
       href: view-strings-visualizer.md
-    - name: View collections in a table visualizer
-      href: view-data-ienumerable-table-visualizer.md
+    - name: View .NET collections with the IEnumerable visualizer
+      href: view-data-in-tabular-visualizer.md
     - name: Disassembly code
       items:
       - name: View disassembly code
@@ -186,6 +186,8 @@
           href: how-to-write-a-run-time-error-reporting-function.md
     - name: Specify symbol (.pdb) and source files in the debugger
       href: specify-symbol-dot-pdb-and-source-files-in-the-visual-studio-debugger.md
+    - name: Enable debugging and diagnostics with Source Link
+      href: how-to-improve-diagnostics-debugging-with-sourcelink.md
     - name: Debug user code
       href: just-my-code.md
     - name: Debugger settings
@@ -264,6 +266,8 @@
           href: how-to-test-and-debug-a-visualizer.md
         - name: Visualizer security considerations
           href: visualizer-security-considerations.md
+        - name: Advanced visualizer scenarios
+          href: visualizer-advanced-scenarios.md
         - name: Visualizer API reference
           href: visualizer-api-reference.md
     - name: restore hidden debugger commands
@@ -280,6 +284,8 @@
       href: remote-debugging-aspnet-on-a-remote-iis-computer.md
     - name: Remote debug ASP.NET on an IIS computer
       href: remote-debugging-aspnet-on-a-remote-iis-7-5-computer.md
+    - name: Remote debug ASP.NET Core on Azure App Service
+      href: remote-debugging-azure-app-service.md
     - name: Remote debug ASP.NET Core on Azure
       href: remote-debugging-azure.md
     - name: Remote debug a C# or Visual Basic project
@@ -292,6 +298,8 @@
       href: configure-the-windows-firewall-for-remote-debugging.md
     - name: Unblock the download on Windows Server
       href: remote-debugging-unblock-file-download.md
+    - name: Troubleshoot remote debugging
+      href: troubleshooting-remote-debugging.md
     - name: Remote debugging error reference
       items:
       - name: Remote debugging errors and troubleshooting
@@ -424,7 +432,7 @@
       href: debug-live-azure-apps-faq.yml
     - name: Troubleshooting snapshot debugging
       href: debug-live-azure-apps-troubleshooting.md
-    - name: Time Travel Debugging live Azure virtual machine app
+    - name: Time travel debugging for live Azure VM apps
       href: debug-live-azure-virtual-machines-time-travel-debugging.md
   - name: Linux debugging
     items:
@@ -432,6 +440,8 @@
       href: debug-dotnet-core-in-wsl-2.md
     - name: Debug .NET Core on Linux using SSH
       href: remote-debugging-dotnet-core-linux-with-ssh.md
+    - name: Debug .NET Core on AKS >>
+      href: /visualstudio/bridge/bridge-to-kubernetes-vs
     - name: Debug with Container Tools >>
       href: ../containers/edit-and-refresh.md
   - name: Application types
@@ -462,7 +472,6 @@
         href: ../xaml-tools/xaml-hot-reload.md
       - name: Debug XAML in Blend
         href: ../xaml-tools/debug-xaml-in-blend.md?toc=/visualstudio/debugger/toc.json
-      - name: HTML and CSS
       - name: How to trigger suspend, resume, and background events
         href: how-to-trigger-suspend-resume-and-background-events-for-windows-store-apps-in-visual-studio.md
     - name: Managed code (C#, Visual Basic, F#)
@@ -585,12 +594,8 @@
           items:
           - name: COM server and container debugging
             href: com-server-and-container-debugging.md
-        - name: ActiveX control
-          items:
-          - name: Debug an ActiveX control
-            href: how-to-debug-an-activex-control.md
-          - name: Debug a data-bound ActiveX control
-            href: debugging-a-data-bound-activex-control.md
+        - name: Debug an ActiveX control
+          href: how-to-debug-an-activex-control.md
         - name: COM debugging tools
           href: com-debugging-tools.md
       - name: Debug injected code
@@ -801,7 +806,7 @@
         href: how-to-expand-and-collapse-spy-increment-trees.md
     - name: Views in Spy++
       items:
-      - name: Spy++ Views
+      - name: Spy++ views
         href: spy-increment-views.md
       - name: Windows
         items:
@@ -809,10 +814,8 @@
           href: windows-view.md
         - name: Use the Finder tool
           href: how-to-use-the-finder-tool.md
-        - name: Search for a Window in Windows View
+        - name: Search for a window in Windows View
           href: how-to-search-for-a-window-in-windows-view.md
-        - name: Display Window properties
-          href: how-to-display-window-properties.md
       - name: Messages
         items:
         - name: Messages View
@@ -827,114 +830,38 @@
           href: how-to-start-and-stop-the-message-log-display.md
         - name: Message codes
           href: message-codes.md
-        - name: Display message properties
-          href: how-to-display-message-properties.md
       - name: Processes
         items:
         - name: Processes View
           href: processes-view.md
         - name: Search for a process in Processes View
           href: how-to-search-for-a-process-in-processes-view.md
-        - name: Display process properties
-          href: how-to-display-process-properties.md
       - name: Threads
         items:
         - name: Threads View
           href: threads-view.md
         - name: Search for a thread in Threads View
           href: how-to-search-for-a-thread-in-threads-view.md
-        - name: Display thread properties
-          href: how-to-display-thread-properties.md
-    - name: Spy++ Reference
+    - name: Spy++ reference
       items:
-      - name: Spy++ Reference overview
+      - name: Spy++ reference overview
         href: spy-increment-reference.md
-      - name: Menu Commands
-        items:
-        - name: Menu Commands overview
-          href: menu-commands.md
-        - name: Spy menu commands
-          href: spy-menu-commands.md
-        - name: Tree menu commands
-          href: tree-menu-commands.md
-        - name: Search menu commands
-          href: search-menu-commands.md
-        - name: View menu commands
-          href: view-menu-commands.md
-        - name: Messages menu commands
-          href: messages-menu-commands.md
-        - name: Window menu commands
-          href: window-menu-commands.md
-        - name: Help menu commands
-          href: help-menu-commands.md
-      - name: Font dialog box (Microsoft Spy++ Help)
-        href: font-dialog-box-microsoft-spy-increment-help.md
+      - name: Spy++ menu commands
+        href: menu-commands.md
       - name: Search tools for Spy++ views
-        items:
-        - name: Overview of search tools for Spy++ views
-          href: search-tools-for-spy-increment-views.md
-        - name: Find Window Dialog Box
-          href: find-window-dialog-box.md
-        - name: Window Search dialog box
-          href: window-search-dialog-box.md
-        - name: Message Search dialog box
-          href: message-search-dialog-box.md
-        - name: Process Search dialog box
-          href: process-search-dialog-box.md
-        - name: Thread Search dialog box
-          href: thread-search-dialog-box.md
-      - name: Window Properties
-        items:
-        - name: Window Properties dialog box
-          href: window-properties-dialog-box.md
-        - name: General Tab, Window Properties dialog box
-          href: general-tab-window-properties-dialog-box.md
-        - name: Styles Tab, Window Properties dialog box
-          href: styles-tab-window-properties-dialog-box.md
-        - name: Windows Tab, Window Properties dialog box
-          href: windows-tab-window-properties-dialog-box.md
-        - name: Class Tab, Window Properties dialog box
-          href: class-tab-window-properties-dialog-box.md
-        - name: Process Tab, Window Properties dialog box
-          href: process-tab-window-properties-dialog-box.md
-      - name: Message Options
-        items:
-        - name: Message Options dialog box
-          href: message-options-dialog-box.md
-        - name: Windows Tab, Message Options dialog box
-          href: windows-tab-message-options-dialog-box.md
-        - name: Messages Tab, Message Options dialog box
-          href: messages-tab-message-options-dialog-box.md
-        - name: Output Tab, Message Options dialog box
-          href: output-tab-message-options-dialog-box.md
+        href: search-tools-for-spy-increment-views.md
+      - name: Window Properties dialog box
+        href: window-properties-dialog-box.md
+      - name: Message Options dialog box
+        href: message-options-dialog-box.md
       - name: Message Properties dialog box
         href: message-properties-dialog-box.md
-      - name: Process Properties
-        items:
-        - name: Process Properties dialog box
-          href: process-properties-dialog-box.md
-        - name: General Tab, Process Properties dialog box
-          href: general-tab-process-properties-dialog-box.md
-        - name: Memory Tab, Process Properties dialog box
-          href: memory-tab-process-properties-dialog-box.md
-        - name: Page File Tab, Process Properties dialog box
-          href: page-file-tab-process-properties-dialog-box.md
-        - name: Space Tab, Process Properties dialog box
-          href: space-tab-process-properties-dialog-box.md
-      - name: Thread Properties
-        items:
-        - name: Thread Properties dialog box
-          href: thread-properties-dialog-box.md
-        - name: General Tab, Thread Properties dialog box
-          href: general-tab-thread-properties-dialog-box.md
-      - name: Other dialog boxes
-        items:
-        - name: Additional dialog boxes
-          href: other-dialog-boxes.md
-        - name: About Microsoft Spy++
-          href: about-microsoft-spy-increment.md
-        - name: Copyright notice for Spy++ help
-          href: copyright-notice-for-spy-increment-help.md
+      - name: Process Properties dialog box
+        href: process-properties-dialog-box.md
+      - name: Thread Properties dialog box
+        href: thread-properties-dialog-box.md
+      - name: About Spy++ dialog box
+        href: about-microsoft-spy-increment.md
 - name: Resources
   items:
   - name: FAQ - Find your debugging feature

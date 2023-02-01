@@ -4,8 +4,8 @@ titleSuffix: ""
 description: Step 2 of a core walkthrough of Python capabilities in Visual Studio, including editing code and running a project.
 ms.date: 02/04/2022
 ms.topic: tutorial
-author: rjmolyneaux
-ms.author: rmolyneaux
+author: cwebster-99
+ms.author: cowebster
 manager: jmartens
 ms.technology: vs-python
 
@@ -65,7 +65,7 @@ Although **Solution Explorer** is where you manage project files, the *editor* w
 
     ![IntellSense showing module members](media/vs-getting-started-python-10-import3.png)
 
-1. Finish by importing the `sin`, `cos`, and `radians` members, noticing the autocompletions available for each. When you're done, your code should appear as follows:
+1. Finish by importing the `cos` and `radians` members, noticing the autocompletions available for each. When you're done, your code should appear as follows:
 
     ```python
     import sys

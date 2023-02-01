@@ -34,17 +34,7 @@ You synchronize the code analysis settings for code projects to the check-in pol
 
 2. Click **Code Analysis**.
 
-::: moniker range="vs-2017"
-
-3. In the **Run this rule set** list, select the check-in policy rule set.
-
-::: moniker-end
-
-::: moniker range=">=vs-2019"
-
 3. In the **Active rules** list, select the check-in policy rule set.
-
-::: moniker-end
 
 ## To specify a custom check-in policy rule set
 
@@ -54,17 +44,7 @@ You synchronize the code analysis settings for code projects to the check-in pol
 
 3. Click **Code Analysis**.
 
-::: moniker range="vs-2017"
-
-4. In the **Run this rule set** list, click **\<Browse>**.
-
-::: moniker-end
-
-::: moniker range=">=vs-2019"
-
 4. In the **Active rules** list, click **\<Browse>**.
-
-::: moniker-end
 
 5. In the **Open** dialog box, specify the check-in policy rule set file.
 

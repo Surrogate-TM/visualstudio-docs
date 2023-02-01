@@ -6,8 +6,8 @@ ms.topic: troubleshooting
 helpviewer_keywords:
   - "xaml edit and continue, troubleshooting"
   - "xaml hot reload, troubleshooting"
-author: TerryGLee
-ms.author: tglee
+author: maddymontaquila
+ms.author: maleger
 manager: jmartens
 ms.technology: vs-xaml-tools
 ms.workload:
@@ -74,6 +74,15 @@ You must either manually set the correct MSBuild property to support XAML Hot Re
 ### Verify that your XAML file has no errors
 
 If your XAML file shows errors in the **Error List**, then XAML Hot Reload may not work.
+
+::: moniker range=">= vs-2022"
+
+### Enable more thorough search to update resource references and styles
+
+Setting the `XAML_HOT_RELOAD_ACCURACY_OVER_PERF` environment variable to 1 enables a more extensive search to update resource references and styles in WPF applications. Be aware that some applications, such as those that use third-party toolkits, can experience significant delays with XAML Hot Reload. When a delay occurs, a Hot Reload progress timer appears in Editor status bar.
+![Screenshot of the 'XAML Hot Reload progress timer' in Visual Studio 2022](./media/vs-2022/xaml-hot-reload-long.gif) 
+
+::: moniker-end
 
 ## Known limitations
 

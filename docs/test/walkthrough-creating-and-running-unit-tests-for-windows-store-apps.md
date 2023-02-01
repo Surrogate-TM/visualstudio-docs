@@ -2,7 +2,7 @@
 title: Create and run unit tests for Universal Windows Platform (UWP) apps
 description: Learn about unit testing UWP apps in Visual Studio, and use test-driven development to create and unit test a C# UWP app.
 ms.custom: SEO-VS-2020
-ms.date: 01/20/2022
+ms.date: 01/17/2023
 ms.topic: conceptual
 helpviewer_keywords:
 - unit tests, creating
@@ -70,30 +70,6 @@ Visual Studio creates the test project and opens it in Visual Studio **Solution 
 
 ::: moniker-end
 
-::: moniker range="vs-2017"
-
-1. From the **File** menu, choose **New Project**.
-
-   The **New Project** dialog displays.
-
-2. Under Templates, choose the programming language you want to create unit tests in, and then choose the associated Windows Universal unit test library. For example, choose **Visual C#** , then choose **Windows Universal**, and then choose **Unit Test Library (Universal Windows)**.
-
-3. (Optional) In the **Name** textbox, enter the name you want to use for the project.
-
-4. (Optional) Modify the path where you want to create the project by entering it in the **Location** textbox, or by choosing the **Browse** button.
-
-5. (Optional) In the **Solution** name textbox, enter that name you want to use for your solution.
-
-6. Leave the **Create directory for solution** option selected and choose the **OK** button.
-
-   :::image type="content" source="media/unit_test_win8_1.png" alt-text="Screenshot that shows the Tailored Unit Test Library.":::
-
-**Solution Explorer** is populated with the UWP unit test project, and the code editor displays the default unit test titled UnitTest1.
-
-:::image type="content" source="media/unit_test_win8_unittestexplorer_newprojectcreated.png" alt-text="Screenshot that shows a new tailored unit test project.":::
-
-::: moniker-end
-
 ### Edit the project's application manifest
 
 1. In **Solution Explorer**, right-click the *Package.appxmanifest* file and select **Open**.
@@ -113,12 +89,6 @@ Select only the capabilities you need for the unit test to function correctly.
 ::: moniker range="vs-2019"
 
 :::image type="content" source="media/vs-2019/unit-test.png" alt-text="Screenshot that shows a unit test manifest.":::
-
-::: moniker-end
-
-::: moniker range="vs-2017"
-
-:::image type="content" source="media/unit-test.png" alt-text="Screenshot that shows a unit test manifest.":::
 
 ::: moniker-end
 
@@ -168,34 +138,6 @@ Also in **Test Explorer**, you can select individual tests and right-click to **
 
 ::: moniker-end
 
-::: moniker range="vs-2017"
-
-To build the solution and run the unit test using Test Explorer:
-
-1. On the Visual Studio **Test** menu, select **Windows**, and then select **Test Explorer**. The **Test Explorer** window opens.
-
-1. From the **Build** menu, choose **Build Solution**.  Your unit test is now shown in **Test Explorer**.
-
-   > [!NOTE]
-   > You must build the solution to update the list of unit tests in **Test Explorer**.
-
-1. In **Test Explorer**, choose the unit test you created, and select **Run All**.
-
-   :::image type="content" source="media/unit-test-run.png" alt-text="Screenshot that shows the Test Explorer Run all command.":::
-
-The solution builds and the unit test runs. After the test runs, the test appears in the **Test Explorer** test list, with information about outcome and duration.
-
-:::image type="content" source="media/unit-test-done.png" alt-text="Screenshot that shows the Test Explorer with completed test information.":::
-
-> [!TIP]
-> You can select one or more unit tests listed in Test Explorer, and then right-click and choose **Run Selected Tests**.
->
-> You can also choose to **Debug Selected Tests**, **Open Test**, and use the **Properties** option.
->
-> :::image type="content" source="media/unit-test-context-menu.png" alt-text="Screenshot that shows a Test Explorer context menu.":::
-
-::: moniker-end
-
 ## Unit test a C# class
 
 A stable set of good unit tests increases confidence that you haven't introduced bugs when you change code. The following example walks through one way to create unit tests for a C# class in a UWP app. The example uses *test-driven development* to write tests that verify specific behavior, and then write code that passes the tests.
@@ -222,8 +164,6 @@ Create the unit test project:
 
 The <xref:Microsoft.VisualStudio.TestTools.UnitTesting.Assert> class provides several static methods that you can use to verify results in test methods.
 
-::: moniker range=">=vs-2019"
-
 1. In **Solution Explorer**, select the *UnitTest.cs* file in the **RooterTests** project.
 
 1. Insert the following code into `TestMethod1`:
@@ -240,29 +180,6 @@ The <xref:Microsoft.VisualStudio.TestTools.UnitTesting.Assert> class provides se
 
 1. The test project builds and runs, and the test appears under **Passed Tests**. The **Group Summary** pane on the right provides details about the test.
 
-::: moniker-end
-
-::: moniker range="vs-2017"
-
-
-1. In **Solution Explorer**, select the *UnitTest.cs* file in the **RooterTests** project.
-
-1. Insert the following code into `TestMethod1`:
-
-   ```csharp
-   [TestMethod]
-   public void TestMethod1()
-   {
-       Assert.AreEqual(0, 0);
-   }
-   ```
-
-1. On the **Test** menu, choose **Run** > **All Tests**.
-
-The test project builds and runs. The **Test Explorer** window appears, and the test appears under **Passed Tests**. The summary pane at the bottom of the window provides more details about the selected test.
-
-
-::: moniker-end
 
 ### Add a class to the app project
 
@@ -341,6 +258,7 @@ The test project builds and runs. The **Test Explorer** window appears, and the 
    ```csharp
    using Maths;
    ```
+
 ::: moniker-end
 
 ::: moniker range="vs-2019"
@@ -358,24 +276,7 @@ The test project builds and runs. The **Test Explorer** window appears, and the 
    ```csharp
    using Maths;
    ```
-::: moniker-end
 
-::: moniker range="vs-2017"
-
-
-1. In **Solution Explorer**, right-click the **RooterTests** project, and select **Add** > **Reference**.
-
-1. In the **Reference Manager - RooterTests** dialog box, expand **Projects**, and select the **Maths** project.
-
-   :::image type="content" source="media/add-reference.png" alt-text="Screenshot that shows adding a reference to the Maths project.":::
-
-1. Select **OK**.
-
-1. Add the following `using` statement to the *UnitTest.cs*, after the `using Microsoft.VisualStudio.TestTools.UnitTesting;` line:
-
-   ```csharp
-   using Maths;
-   ```
 ::: moniker-end
 
 ### Add a test that uses the app function
@@ -408,7 +309,6 @@ In **Test Explorer**, select the **Run All Tests** icon. The solution builds, an
 
 :::image type="content" source="media/vs-2022/test-explorer-uwp-app.png" alt-text="Screenshot that shows Basic Test passed in Test Explorer":::
 
-
 ::: moniker-end
 
 ::: moniker range="vs-2019"
@@ -417,17 +317,9 @@ In **Test Explorer**, select the **Run All Tests** icon. The solution builds, an
 
 :::image type="content" source="media/vs-2019/test-explorer-uwp-app.png" alt-text="Screenshot that shows Basic Test passed in Test Explorer":::
 
-
 ::: moniker-end
 
-::: moniker range="vs-2017"
-
-In **Test Explorer**, choose **Run All**. The solution builds, and the tests run and pass.
-
-:::image type="content" source="media/ute_cpp_testexplorer_basictest.png" alt-text="Screenshot that shows BasicTest passed in Test Explorer":::
-
-
-::: moniker-end
+If you get a Duplicate Entity error when you run the test, delete the runtime directives file, `Properties\Default.rd.xml` from the test project and re-try.
 
 You've set up the test and app projects and verified that you can run tests that call functions in the app project. Now you can write real tests and code.
 
@@ -529,53 +421,6 @@ It's best not to change tests that have passed. Add new tests instead. Develop c
 
 ::: moniker-end
 
-::: moniker range="vs-2017"
-
-1. Add a new test called `RangeTest` to *UnitTest.cs*:
-
-   ```csharp
-   [TestMethod]
-   public void RangeTest()
-   {
-       Rooter rooter = new Rooter();
-       for (double v = 1e-6; v < 1e6; v = v * 3.2)
-       {
-           double expected = v;
-           double actual = rooter.SquareRoot(v*v);
-           double tolerance = expected/1000;
-           Assert.AreEqual(expected, actual, tolerance);
-       }
-   }
-   ```
-
-1. Run the **RangeTest** test and verify that it fails.
-
-   :::image type="content" source="media/range-test-fail.png" alt-text="Screenshot that shows the RangeTest fails in Test Explorer.":::
-
-   > [!TIP]
-   > In test driven development, you run a test immediately after you write it. This practice helps you avoid the easy mistake of writing a test that never fails.
-
-1. Fix your app code so that the new test passes. In *Rooter.cs*, change the `SquareRoot` function as follows:
-
-   ```csharp
-   public double SquareRoot(double x)
-   {
-       double estimate = x;
-       double diff = x;
-       while (diff > estimate / 1000)
-       {
-           double previousEstimate = estimate;
-           estimate = estimate - (estimate * estimate - x) / (2 * estimate);
-           diff = Math.Abs(previousEstimate - estimate);
-       }
-       return estimate;
-   }
-   ```
-
-1. In **Test Explorer**, choose **Run All**. All three tests now pass.
-
-::: moniker-end
-
 ### Refactor the code
 
 In this section, you refactor both the app and the test code, then rerun the tests to make sure they still pass.
@@ -603,7 +448,7 @@ To add the helper method, in *UnitTest.cs*:
    ```csharp
    private double ToleranceHelper(double expected)
    {
-   return expected / 1000;
+       return expected / 1000;
    }
    ```
 

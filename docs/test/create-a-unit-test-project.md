@@ -24,25 +24,11 @@ Unit tests often mirror the structure of the code under test. For example, a uni
 
 1. On the **File** menu, select **New** > **Project**, or press **Ctrl**+**Shift**+**N**.
 
-::: moniker range="vs-2017"
-
-2. In the **New Project** dialog box, expand the **Installed** node, choose the language that you want to use for your test project, and then choose **Test**.
-
-3. Select the project template for the test framework that you want to use, for example **MSTest Test Project** or **NUnit Test Project**. Name the project, and then choose **OK**.
-
-   ![Test project templates in Visual Studio 2017](media/test-project-templates.png)
-
-::: moniker-end
-
-::: moniker range=">=vs-2019"
-
 2. On the **Create a new project** page, type **unit test** into the search box. Select the project template for the test framework that you want to use, for example **MSTest Test Project** or **NUnit Test Project**, and then select **Next**.
 
    ![Test project templates in Visual Studio 2019](media/vs-2019/test-project-templates.png)
 
 3. On the **Configure your new project** page, enter a name for your project, and then select **Create**.
-
-::: moniker-end
 
 4. In your unit test project, add a reference to the code under test. To add a reference to a code project in the same solution:
 

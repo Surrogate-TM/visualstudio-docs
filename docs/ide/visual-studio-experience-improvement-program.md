@@ -27,20 +27,6 @@ Given the purpose of the data we collect and the constraints on its access and r
 
 The VSCEIP is turned on by default. You can turn it off, or back on again, by following these instructions:
 
-::: moniker range="vs-2017"
-
-1. In Visual Studio, choose **Help > Send Feedback**, and then select **Settings**.
-
-   The **Visual Studio Experience Improvement Program** dialog box opens.
-
-1. To opt out, select **No, I would not like to participate**, and then select **OK**. To opt in, select **Yes, I am willing to participate**, and then select **OK**.
-
-   ![Visual Studio Experience Improvement Program dialog](media/experience-improvement-program.png)
-
-::: moniker-end
-
-::: moniker range=">=vs-2019"
-
 1. In Visual Studio, choose **Help** > **Privacy** > **Privacy Settings**.
 
    The **Visual Studio Experience Improvement Program** dialog box opens.
@@ -49,21 +35,11 @@ The VSCEIP is turned on by default. You can turn it off, or back on again, by fo
 
    ![Visual Studio Experience Improvement Program dialog](media/vs-2022/experience-improvement-program.png)
 
-::: moniker-end
-
 #### Registry settings
 
 If you install the [Build Tools for Visual Studio](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2017), you must update the registry to configure the VSCEIP. Enterprise customers can construct a group policy to opt in or out of the VSCEIP by setting a registry-based policy.
 
 The relevant registry key and settings are as follows:
-
-::: moniker range="vs-2017"
-
-- On a 64-bit OS, Key = **HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\VSCommon\15.0\SQM**
-- On a 32-bit OS, Key = **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VSCommon\15.0\SQM**
-- When Group Policy is enabled, Key = **HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\VisualStudio\SQM**
-
-::: moniker-end
 
 ::: moniker range="vs-2019"
 

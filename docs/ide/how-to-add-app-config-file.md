@@ -2,7 +2,7 @@
 title: How to add an app.config file to a project
 description: Learn how to add an app.config file to a C# project so you can customize how the common language runtime locates and loads assembly files.
 ms.custom: SEO-VS-2020
-ms.date: 01/12/2022
+ms.date: 01/17/2023
 ms.topic: how-to
 dev_langs:
 - CSharp
@@ -19,7 +19,7 @@ ms.workload:
 
  [!INCLUDE [Visual Studio](~/includes/applies-to-version/vs-windows-only.md)]
 
-By adding an application configuration file (*app.config* file) to a C# project, you can customize how the common language runtime locates and loads assembly files. For more information about application configuration files, see [How the runtime locates assemblies (.NET Framework)](/dotnet/framework/deployment/how-the-runtime-locates-assemblies).
+By adding an application configuration file (*app.config* file) to a C# project, you can customize how the common language runtime locates and loads assembly files. For more information about application configuration files or about assemblies in .NET, see [How the runtime locates assemblies (.NET Framework)](/dotnet/framework/deployment/how-the-runtime-locates-assemblies) and [Assemblies in .NET](/dotnet/standard/assembly/).
 
 > [!NOTE]
 > UWP apps don't contain an *app.config* file.
@@ -27,22 +27,6 @@ By adding an application configuration file (*app.config* file) to a C# project,
 When you build your project, the development environment automatically copies your *app.config* file, changes the file name of the copy to match your executable, and then moves the copy to the **bin** directory.
 
 ## To add an application configuration file to a C# project
-
-::: moniker range="vs-2017"
-
-1. On the menu bar, choose **Project** > **Add New Item**.
-
-     The **Add New Item** dialog box appears.
-
-1. Expand **Installed** > **Visual C# Items**, and then choose the **Application Configuration File** template.
-
-1. In the **Name** text box, enter a name, and then choose the **Add** button.
-
-     A file named *app.config* is added to your project.
-
-::: moniker-end
-
-::: moniker range=">=vs-2019"
 
 1. In **Solution Explorer**, right-click the project node, and then select **Add** > **New Item**.
 
@@ -55,8 +39,6 @@ When you build your project, the development environment automatically copies yo
 1. Select the **Add** button.
 
      A file named *App.config* is added to your project.
-
-::: moniker-end
 
 ## See also
 

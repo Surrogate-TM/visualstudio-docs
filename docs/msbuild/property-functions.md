@@ -72,6 +72,7 @@ In static property functions, you can use any static method or property of these
 - <xref:System.Char?displayProperty=nameWithType>
 - <xref:System.Convert?displayProperty=nameWithType>
 - <xref:System.DateTime?displayProperty=nameWithType>
+- <xref:System.DateTimeOffset?displayProperty=nameWithType> (Available in MSBuild 17.3 and higher)
 - <xref:System.Decimal?displayProperty=nameWithType>
 - <xref:System.Double?displayProperty=nameWithType>
 - <xref:System.Enum?displayProperty=nameWithType>
@@ -104,14 +105,29 @@ In addition, you can use the following static methods and properties:
 - [System.Environment::GetEnvironmentVariables](xref:System.Environment.GetEnvironmentVariables*)
 - [System.Environment::GetFolderPath](xref:System.Environment.GetFolderPath*)
 - [System.Environment::GetLogicalDrives](xref:System.Environment.GetLogicalDrives*)
+- [System.Environment::Is64BitOperatingSystem](xref:System.Environment.Is64BitOperatingSystem*)
+- [System.Environment::Is64BitProcess](xref:System.Environment.Is64BitProcess*)
+- [System.Environment::MachineName](xref:System.Environment.MachineName*)
+- [System.Environment::NewLine](xref:System.Environment.NewLine*) (Available in MSBuild 17.3 and higher)
+- [System.Environment::OSVersion](xref:System.Environment.OSVersion*)
+- [System.Environment::ProcessorCount](xref:System.Environment.ProcessorCount*)
+- [System.Environment::StackTrace](xref:System.Environment.StackTrace*)
+- [System.Environment::SystemDirectory](xref:System.Environment.SystemDirectory*)
+- [System.Environment::SystemPageSize](xref:System.Environment.SystemPageSize*)
+- [System.Environment::TickCount](xref:System.Environment.TickCount*)
+- [System.Environment::UserDomainName](xref:System.Environment.UserDomainName*)
+- [System.Environment::UserInteractive](xref:System.Environment.UserInteractive*)
+- [System.Environment::UserName](xref:System.Environment.UserName*)
+- [System.Environment::Version](xref:System.Environment.UserName*)
+- [System.Environment::WorkingSet](xref:System.Environment.WorkingSet*)
 - [System.IO.Directory::GetDirectories](xref:System.IO.Directory.GetDirectories*)
 - [System.IO.Directory::GetFiles](xref:System.IO.Directory.GetFiles*)
 - [System.IO.Directory::GetLastAccessTime](xref:System.IO.Directory.GetLastAccessTime*)
 - [System.IO.Directory::GetLastWriteTime](xref:System.IO.Directory.GetLastWriteTime*)
 - [System.IO.Directory::GetParent](xref:System.IO.Directory.GetParent*)
 - [System.IO.File::Exists](xref:System.IO.File.Exists*)
-- [System.IO.File::GetCreationTime](xref:System.IO.File.GetCreationTime*)
 - [System.IO.File::GetAttributes](xref:System.IO.File.GetAttributes*)
+- [System.IO.File::GetCreationTime](xref:System.IO.File.GetCreationTime*)
 - [System.IO.File::GetLastAccessTime](xref:System.IO.File.GetLastAccessTime*)
 - [System.IO.File::GetLastWriteTime](xref:System.IO.File.GetLastWriteTime*)
 - [System.IO.File::ReadAllText](xref:System.IO.File.ReadAllText*)
@@ -171,10 +187,12 @@ Here is a list of MSBuild property functions:
 |string NormalizePath(params string[] path)|Gets the canonicalized full path of the provided path and ensures it contains the correct directory separator characters for the current operating system.|
 |string NormalizeDirectory(params string[] path)|Gets the canonicalized full path of the provided directory and ensures it contains the correct directory separator characters for the current operating system while ensuring it has a trailing slash.|
 |string EnsureTrailingSlash(string path)|If the given path doesn't have a trailing slash then add one. If the path is an empty string, does not modify it.|
-|string GetPathOfFileAbove(string file, string startingDirectory)|Searches for and returns the full path to a file in the directory structure above the current build file's location, or based on `startingDirectory`, if specified.|
+|string GetPathOfFileAbove(string file, string startingDirectory)|Searches for and returns the full path to a file in the directory structure at and above the current build file's location, or based on `startingDirectory`, if specified.|
 |GetDirectoryNameOfFileAbove(string startingDirectory, string fileName)|Locate and return the directory of a file in either the directory specified or a location in the directory structure above that directory.|
 |string MakeRelative(string basePath, string path)|Makes `path` relative to `basePath`. `basePath` must be an absolute directory. If `path` cannot be made relative, it is returned verbatim. Similar to `Uri.MakeRelativeUri`.|
-|string ValueOrDefault(string conditionValue, string defaultValue)|Return the string in parameter 'defaultValue' only if parameter 'conditionValue' is empty, else, return the value conditionValue.|
+|string ValueOrDefault(string conditionValue, string defaultValue)|Returns the string in parameter `defaultValue` only if parameter `conditionValue` is empty, else, return the value `conditionValue`.|
+|string ConvertToBase64(string toEncode)|Returns the string after converting all bytes to base 64 (alphanumeric characters plus `+` and `/`), ending in one or two `=`.|
+|string ConvertFromBase64(string toDecode)|Returns the string after converting from base 64 (alphanumeric characters plus `+` and `/`), ending in one or two `=`.|
 
 ## Nested property functions
 

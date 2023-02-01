@@ -11,7 +11,7 @@ ms.workload:
   - "dotnet"
 dev_langs:
   - "VB"
-ms.date: 01/07/2022
+ms.date: 10/31/2022
 ms.custom: "vs-acquisition, get-started"
 ---
 # Tutorial: Create a WPF application with Visual Basic
@@ -32,12 +32,14 @@ In this tutorial, you learn how to:
 > - Debug with breakpoints
 > - Build a release version
 
+## What is WPF?
+
+WPF, or Windows Presentation Foundation, is a UI (user interface) framework that creates desktop client applications.  The WPF development platform supports a broad set of application development features, including an application model, resources, controls, graphics, layout, data binding, documents, and security.
+
+WPF is part of .NET, so if you have previously built applications with .NET using ASP.NET or Windows Forms, the programming experience should be familiar. WPF uses the Extensible Application Markup Language [XAML](../../xaml-tools/xaml-overview.md) to provide a declarative model for application programming. For more information, see [WPF .NET overview](/dotnet/desktop/wpf/overview/?view=netdesktop-6.0&preserve-view=true).
+
 ## Prerequisites
 
-::: moniker range="vs-2017"
-You need Visual Studio to complete this tutorial.
-Visit the [Visual Studio downloads page](https://visualstudio.microsoft.com/vs/older-downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=vs+2017+download) for a free version.
-::: moniker-end
 ::: moniker range="vs-2019"
 You need Visual Studio to complete this tutorial.
 Visit the [Visual Studio downloads page](https://visualstudio.microsoft.com/vs/) for a free version.
@@ -52,24 +54,6 @@ Visit the [Visual Studio downloads page](https://visualstudio.microsoft.com/down
 When you create an application in Visual Studio, you first create a project.
 In this tutorial, create a Windows Presentation Foundation project.
 
-::: moniker range="vs-2017"
-1. Open Visual Studio.
-
-1. On the menu bar, select **File** > **New** > **Project**.
-
-   ![Screenshot shows Visual Studio with File then New then Project selected from the menu.](media/tutorial-wpf/visual-studio-create-project.png)
-
-1. In the **New Project** dialog box, select **Installed** > **Visual Basic** > **Windows Desktop**, and then select the **WPF App (.NET Framework)** template. Name the project **HelloWPFApp**, and select **OK**.
-
-   ![Screenshot shows the New Project dialog box with the W P F app template selected.](media/tutorial-wpf/create-desktop-project.png)
-
-   Visual Studio creates the HelloWPFApp project and solution.
-   **Solution Explorer** shows the various files.
-
-   ![Screenshot shows Solution Explorer with Hello W P F App files loaded.](media/tutorial-wpf/solution-explorer.png)
-
-The **WPF Designer** shows a design view and a XAML view of *MainWindow.xaml* in a split view.
-::: moniker-end
 ::: moniker range="vs-2019"
 1. Open Visual Studio.
 
@@ -89,7 +73,7 @@ The **WPF Designer** shows a design view and a XAML view of *MainWindow.xaml* in
 
 ::: moniker range=">=vs-2022"
 1. Open Visual Studio.
- 
+
 1. On the start window, choose **Create a new project**.
 
    :::image type="content" source="media/vs-2022/start-window-create-new-project.png" alt-text="Screenshot of the start window in Visual Studio 2022 with the 'Create a new project' option highlighted.":::
@@ -249,12 +233,6 @@ To see how this process works, the first step deliberately introduces an error i
 
 1. Start the debugger again (press **F5**). You should now see the **Greetings** window of your application.
 
-   ::: moniker range="vs-2017"
-
-   ![Screenshot of the Greetings window with the TextBlock, RadioButtons, and Button controls visible. The 'Hello' radio button is selected.](media/exploreide-wpf-running-app.png)
-
-   ::: moniker-end
-
    ::: moniker range="vs-2019"
 
    ![Screenshot of the Greetings window with the TextBlock, RadioButtons, and Button controls visible. The 'Hello' radio button is selected.](media/vs-2019/exploreide-wpf-running-app.png)
@@ -335,10 +313,6 @@ Advance to the next article to learn how to create a Windows Forms app in Visual
 
 For more information about Visual Studio, see these resources:
 
-::: moniker range="vs-2017"
-- [What's new in Visual Studio 2017](../../ide/whats-new-visual-studio-2017.md)
-- [Productivity tips](../../ide/productivity-features.md)
-::: moniker-end
 ::: moniker range="vs-2019"
 - [What's new in Visual Studio 2019](../../ide/whats-new-visual-studio-2019.md)
 - [Productivity tips](../../ide/productivity-features.md)

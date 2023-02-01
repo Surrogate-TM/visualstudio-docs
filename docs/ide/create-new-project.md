@@ -2,7 +2,7 @@
 title: Create a new project
 description: Learn how to create a new project in Visual Studio.
 ms.custom: SEO-VS-2020
-ms.date: 11/24/2021
+ms.date: 10/28/2022
 ms.topic: how-to
 f1_keywords:
 - vs.newproject
@@ -20,37 +20,6 @@ ms.workload:
  [!INCLUDE [Visual Studio](~/includes/applies-to-version/vs-windows-only.md)]
 
 In this article, we'll show you how to quickly create a new project in Visual Studio from a template.
-
-::: moniker range="vs-2017"
-
-## Open the New Project page in Visual Studio 2017
-
-There are multiple ways to create a new project in Visual Studio 2017. On the Start page, you can type in the name of a project template in the **Search project templates** box or select the **Create new project** link to open the **New Project** dialog box. Aside from the Start page, you can also select **File** > **New** > **Project** on the menu bar or select the **New Project** button on the toolbar.
-
-![Screenshot of the menu bar in Visual Studio with the File > New > Project options selected.](./media/vside-newproject1.png)
-
-## Select a template type in Visual Studio 2017
-
-In the **New Project** dialog box, available project templates appear in a list under the **Templates** category. Templates are organized by programming language and project type, such as Visual C#, JavaScript, and Azure Data Lake.
-
-![Screenshot of the New Project dialog box that shows a list of installed templates.](./media/vside-newproject-templates-list.png)
-
-> [!NOTE]
-> The list of available languages and project templates that appears depends on the version of Visual Studio you are running and the workloads that are installed. To learn about how to install additional workloads, see [Modify Visual Studio by adding or removing workloads and components](../install/modify-visual-studio.md).
-
-Show the list of templates for the programming language you want to use by selecting the triangle next to the language name and then choosing a project category (such as Windows Desktop).
-
-The following image shows the project templates available for Visual C# .NET Core projects:
-
-![Screenshot of the New Project dialog box that lists the project templates you can choose from.](./media/new-project-dialog-net-core.png)
-
-## Configure your project in Visual Studio 2017
-
-Enter a name for the new project in the **Name** box. You can save the project in the default location on your computer or select the **Browse** button to find another location. You can also select a solution name or add the new project to a Git repository (by selecting **Add to Source Control**).
-
-Select **OK** to create the solution and project.
-
-::: moniker-end
 
 ::: moniker range="vs-2019"
 
@@ -80,21 +49,17 @@ If the Visual Studio development environment is already open, you can create a n
 
 ::: moniker-end
 
-::: moniker range=">=vs-2019"
-
 ## Select a template type
 
 On the **Create a new project** dialog, a list of your recently selected templates appears on the left. The templates are sorted by *most recently used*.
 
 If you're not selecting from the recently used templates, you can filter all available project templates by **Language** (for example, C# or C++), **Platform** (for example, Windows or Azure), and **Project type** (for example, Desktop or Web). You can also enter search text into the search box to further filter the templates, for example, **asp.net**.
 
-::: moniker-end
-
 ::: moniker range="vs-2019"
 
 :::image type="content" source="media/vs-2019/create-new-project-filters.png" alt-text="Screenshot of the project template filters in Visual Studio 2019.":::
 
-The tags that appear under each template correspond to the three dropdown filters (Language, platform, and project type).
+The tags that appear under each template correspond to the three dropdown filters (language, platform, and project type).
 
 > [!TIP]
 > If you don't see the template you're looking for, you might be missing a workload for Visual Studio. To install additional workloads, for example, **Azure Development** or **Mobile Development with .NET**, select the **Install more tools and features** link to open Visual Studio Installer. From there, select the workloads you want to install, and then select **Modify**. After that, additional project templates will be available to choose from.
@@ -109,7 +74,7 @@ Select a template and then select **Next**.
 
 :::image type="content" source="media/vs-2022/create-new-project-filters.png" alt-text="Screenshot of the project template filters in Visual Studio 2022.":::
 
-The tags that appear under each template correspond to the three dropdown filters (Language, platform, and project type).
+The tags that appear under each template correspond to the three dropdown filters (language, platform, and project type).
 
 > [!TIP]
 > If you don't see the template you're looking for, you might be missing a workload for Visual Studio. To install additional workloads, for example, **Azure Development** or **Mobile Development with .NET**, select the **Install more tools and features** link to open Visual Studio Installer. From there, select the workloads you want to install, and then select **Modify**. After that, additional project templates will be available to choose from.
@@ -153,16 +118,13 @@ Select **Create** to create the new project.
 
 ::: moniker-end
 
-## Add additional projects to a solution
+## Add another project to a solution
 
-If you want to add an additional project to a solution, right-click the solution node in **Solution Explorer** and then select **Add** > **New Project**.
+If you want to add another project to a solution, right-click the solution node in **Solution Explorer** and then select **Add** > **New Project**.
 
 > [!TIP]
 > For an example of a project and solution created from scratch, complete with step-by-step instructions and sample code, see [Introduction to projects and solutions](../get-started/tutorial-projects-solutions.md).
 
 ## See also
 
-- [Introduction to projects and solutions](../get-started/tutorial-projects-solutions.md)
-- [Work with solutions and projects](creating-solutions-and-projects.md)
-- [Manage project and solution properties](managing-project-and-solution-properties.md)
-- [Create projects (Visual Studio for Mac)](/visualstudio/mac/create-new-projects)
+- [Visual Studio for Mac: Create a new project](/visualstudio/mac/create-new-projects)

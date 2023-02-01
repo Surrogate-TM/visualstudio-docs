@@ -1,7 +1,7 @@
 ---
 title: Create a network-based installation
 description: Learn how to create a network install point for deploying Visual Studio within an enterprise.
-ms.date: 3/3/2022
+ms.date: 1/20/2023
 ms.topic: conceptual
 helpviewer_keywords:
 - '{{PLACEHOLDER}}'
@@ -33,12 +33,6 @@ There is a lot of information on this webpage, and it's grouped up into the foll
 ## Before you get started
 
 There are a few important things to plan out and be aware of before you get started.  
-::: moniker range="vs-2017"
-
-- **Folder Management:** If you have multiple editions of Visual Studio in use within your enterprise (for example, Visual Studio 2017 Professional and Visual Studio 2017 Enterprise), you must create a separate network install point for each edition. Furthermore, the original Visual Studio installation layout and all subsequent product updates must be located in the same network directory to ensure that the client's repair and uninstall functionality works properly. Lastly, the layout path must be fewer than 80 characters, although some organizations have successfully used [symbolic links](/windows/win32/fileio/symbolic-links) to work around the 80-character limitation. 
-- **Planning for Updates:** You must decide how your client machines should receive product updates _before_ you do the initial client install. This is necessary to ensure that your clients' update location configuration is set correctly. Your choices include having the clients get updates from either the network layout location or from Microsoft hosted servers on the internet. Once the client has installed from the layout, the client's update location configuration is locked and unchangable. 
-
-::: moniker-end
 
 ::: moniker range="vs-2019"
 
@@ -63,20 +57,6 @@ There are a few important things to plan out and be aware of before you get star
 
 Download the bootstrapper for the edition of Visual Studio you want and copy it into the directory that you want to serve as the source location of the layout. Once the layout is created, you can use it to install Visual Studio onto any client machine. The bootstrapper is the executable that you use to create, update, and perform other layout operations. You must have an internet connection to complete this step.
 
-::: moniker range="vs-2017"
-
-To get the latest bootstrappers for Visual Studio 2017 version 15.9, download one of the files below. The bootstrappers listed below will always install the latest most secure version of Visual Studio 2017, no matter when you run them:
-
-| Edition                                      | Bootstrapper            |
-|----------------------------------------------|---------------------|
-| Visual Studio 2017 Enterprise version 15.9   | [vs_enterprise.exe](https://aka.ms/vs/15/release/vs_enterprise.exe) |
-| Visual Studio 2017 Professional version 15.9 | [vs_professional.exe](https://aka.ms/vs/15/release/vs_professional.exe) |
-| Visual Studio 2017 Build Tools version 15.9  | [vs_buildtools.exe](https://aka.ms/vs/15/release/vs_buildtools.exe)   |
-
-Other supported bootstrappers include vs_feedbackclient.exe, vs_teamexplorer.exe, vs_testagent.exe, vs_testcontroller.exe, and vs_testprofessional.exe.
-
-::: moniker-end
-
 ::: moniker range="vs-2019"
 
 The bootstrappers listed below will always install the latest most secure version of Visual Studio 2019, no matter when you run them. Alternatively, if you want to create or update a layout to a specific version of Visual Studio 2019, go to the [Visual Studio 2019 Releases](/visualstudio/releases/2019/history#installing-an-earlier-release) page that has links to the fixed version bootstrappers for each servicing release, and download the one you want. Copy it into the directory that you want to serve as the source location of the layout.
@@ -100,13 +80,6 @@ The bootstrappers listed below will always install the latest most secure versio
 | Visual Studio 2022 Enterprise   | [vs_enterprise.exe](https://aka.ms/vs/17/release/vs_enterprise.exe)     |
 | Visual Studio 2022 Professional | [vs_professional.exe](https://aka.ms/vs/17/release/vs_professional.exe) |
 | Visual Studio 2022 Build Tools   | [vs_buildtools.exe](https://aka.ms/vs/17/release/vs_buildtools.exe)         |
-
-::: moniker-end
-
-::: moniker range="vs-2017"
-
->[!TIP]
->If you previously downloaded a bootstrapper file and want to verify what version it is, here's how. In Windows, open File Explorer, right-click the bootstrapper file, choose **Properties**, choose the **Details** tab, and then view the **Product version** number. To match that number to a release of Visual Studio, see [Visual Studio build numbers and release dates](visual-studio-build-numbers-and-release-dates.md).
 
 ::: moniker-end
 
@@ -186,8 +159,6 @@ Here are a few examples of how to create a custom partial layout.
     ```shell
     vs_enterprise.exe --layout C:\VSLayout --add Microsoft.VisualStudio.Workload.Azure --add Microsoft.VisualStudio.Workload.ManagedDesktop --includeRecommended --includeOptional
     ```
-    
-::: moniker range=">=vs-2019"
 
 ### Ensure your layout is using the latest installer
 
@@ -200,8 +171,6 @@ We recommend that you always use the latest Visual Studio installer in your layo
     ```shell
     vs_enterprise.exe --layout C:\VSLayout --useLatestInstaller
     ```
-
-::: moniker-end
 
 ### Copy the layout to a network share
 
@@ -252,20 +221,27 @@ Sometimes you may want to update your layout to a _particular version of the pro
 
 You can go to the [Visual Studio 2019 Releases](/visualstudio/releases/2019/history#installing-an-earlier-release) page and download a particular fixed version bootstrapper, copy it into your layout, and use it to update the layout to that exact version specified in the bootstrapper. You would use the exact same syntax as above.
 
+You can use an **[administrator update](applying-administrator-updates.md)** to update your layout to a specific version. To get the **administrator update**, go to the [Microsoft Update Catalog](https://catalog.update.microsoft.com) and search for your update.  Download the _update.exe_ to the computer that's hosting the layout, open up a command prompt, and run a command as follows:
+
+```shell
+visualstudioupdate-16.0.0to16.11.23.exe layout --layoutPath c:\VSLayout
+```
+Note that administrator updates will not initiate an original layout install; they will only update an existing layout or a client instance. 
+
 ::: moniker-end
 
 ::: moniker range="vs-2022"
 
 You can go to the [Visual Studio 2022 Release History](/visualstudio/releases/2022/release-history#release-dates-and-build-numbers) page and download a particular fixed version bootstrapper, copy it into your layout, and use it to update the layout to that exact version specified in the bootstrapper. You would use the exact same syntax as above.
 
-::: moniker-end
-
 You can use an **[administrator update](applying-administrator-updates.md)** to update your layout to a specific version. To get the **Administrator Update**, go to the [Microsoft Update Catalog](https://catalog.update.microsoft.com), search for the update you want to update your layout to.  Download the _update.exe_ to the computer that's hosting the layout, open up a command prompt on that computer and run a command like this:
 
 ```shell
-visualstudioupdate-17.0.0to17.0.1.exe layout --layoutPath c:\VSLayout
+visualstudioupdate-17.0.0to17.4.4.exe layout --layoutPath c:\VSLayout
 ```
 Note that administrator updates will not initiate an original layout install; they will only update an existing layout or a client instance. 
+
+::: moniker-end
 
 ::: moniker range=">=vs-2022"
 
@@ -277,9 +253,9 @@ To change the channel that the layout is based off of, simply acquire the desire
 
 ::: moniker-end
 
-### Modify the contents of the layout
+### Modify and add to a partial layout
 
-It is possible to modify this layout and add or remove additional workloads or components or languages. In the example below, we'll add the Azure workload and a localized language to the layout we created above. After we've made the modification, both the Managed Desktop and Azure workloads, and the English and German resources are included in this layout. Also, the layout is updated to the latest available version.
+It is possible to modify a partial layout and add additional workloads, components, or languages. In the example below, we'll add the Azure workload and a localized language to the layout we created above. After we've made the modification, both the Managed Desktop and Azure workloads, and the English and German resources are included in this layout. In addition to adding components, the layout is updated to the latest available version.
 
 ```shell
 vs_enterprise.exe --layout c:\VSLayout --add Microsoft.VisualStudio.Workload.Azure --lang de-DE
@@ -298,17 +274,15 @@ vs_enterprise.exe --layout c:\VSLayout --add Microsoft.VisualStudio.Workload.Net
 ```
 
  > [!IMPORTANT]
- > An update operation doesn't download or install additional optional components either to the layout or onto the client. If you need to add or change optional components, first remove the old optional components from the `layout.json` configuration file and include the new components you need in the "add" section of `layout.json`. Then, when you run the `--layout` command to update the layout, it will download the newly added components into the layout.
- >
- > To get these new components installed on the client machine, make sure you do these three steps. First, verify that the layout contains the new components as described above. Next, update your client to the latest bits in the layout. Finally, again on the client, run a modify operation which will install the new components (that were added to the layout) onto the client machine.
-
-::: moniker range=">=vs-2019"
+ > It is not possible to reliably remove components from a layout. 
+ 
+You can also add components to a partial layout by directly editing the `layout.json` configuration file and including the new components you need in the "add" section of this file. Adding components this way or on the command line as illustrated above is equivalent to modifying the layout and adding additional components. 
+ 
+The easiest way to install the newly added layout components on a client machine is to run the bootstrapper in the layout from the client machine. The `response.json` file in the layout will ensure that all the workloads and components that exist in the layout are selected by default in the client's installer UI.   
 
 ### Configure the layout to always include and provide the latest installer
 
 You can configure your layout to _always_ include and provide the latest installer to your clients, even if the installer is considered a part of a more recent version of Visual Studio. Thus, when your client updates from this layout, the client will acquire the latest installer that's included and provided by this layout. The benefit is that once the latest installer is on your client, your client installations will be able to take advantage of the bug fixes and new functionality that we continue to add to the installer. 
-
-::: moniker-end
 
 ::: moniker range="vs-2019"
 
@@ -317,12 +291,9 @@ You can configure your layout to _always_ include and provide the latest install
 
 ::: moniker-end
 
-::: moniker range=">=vs-2019"
-
 There are two ways to enable your layout to include and provide the latest installer:
 
 - You can pass in the `--useLatestInstaller` parameter to the bootstrapper when you're creating or updating the layout. This will cause a setting to get set in the layout.json file, which can be found in the root directory of the layout. Here's an example for how to update the layout and configure it to use the latest and greatest installer available.  
-
 
    ```shell
    vs_enterprise.exe --layout C:\VSLayout --useLatestInstaller
@@ -339,6 +310,7 @@ There are two ways to enable your layout to include and provide the latest insta
      "productId": "Microsoft.VisualStudio.Product.Enterprise",
    
      "useLatestInstaller": true
+     "removeOos": true
      
    }
    ```
@@ -347,7 +319,9 @@ There is no way to programmatically remove this setting in the layout.json file,
 
 Note that you may find this `"UseLatestInstaller": true` setting in the layout's response.json file too, but it is ignored there. The [response.json file is used to set default configuration options on the _client_ when the client installs or updates from a layout](automated-installation-with-response-file.md). This particular `"useLatestInstaller": true` setting is used to ensure that the contents of the _layout_ contain the latest installer, so that the client machines can then acquire the latest installer from the layout.
 
-::: moniker-end
+### Configure the layout to remove out-of-support components on the client machine.
+
+Some enterprises will want to take advantage of the feature introduced in Visual Studio 2022 version 17.4 that removes components that have transitioned to an out-of-support state. This is relatively easy to set up if you're managing a layout and if your clients are receiving administrator updates. First, you'll need to configure your layout to have the latest version of the installer as described above. Secondly, you'll need to add the line `"removeOos": true` to the response.json file as illustrated above. If your layout has these two details set properly, then subsequent administrator updates will respect this setting and will remove out-of-support components from the client machines.
 
 ### Verify a layout
 
@@ -362,7 +336,7 @@ vs_enterprise.exe --layout <layoutDir> --verify
 > [!NOTE]
 > Some important metadata files that are needed by the `--verify` option must be in the layout folder. If these metadata files are missing, "--verify" cannot run and Setup gives you an error. If you experience this error, try to update the layout again, or re-create a new network layout in a different folder.
 
-Remember that Microsoft ships updates to Visual Studio periodically, so a more recent layout might not contain the same version as the initial layout, unless you use the [fixed link bootstrappers](#download-the-visual-studio-bootstrapper-to create-the-network-layout).
+Remember that Microsoft ships updates to Visual Studio periodically, so a more recent layout might not contain the same version as the initial layout, unless you use the [fixed link bootstrappers](#download-the-visual-studio-bootstrapper-to-create-the-network-layout).
 
 ### Fix a layout
 
@@ -390,7 +364,7 @@ When you execute this command, Setup analyzes your network layout folder to find
 
 ## Install Visual Studio onto a client machine from a network installation
 
-Administrators can deploy Visual Studio onto client workstations as part of an installation script. Or, users who have administrator rights can run setup directly from the share to install Visual Studio on their machine.
+Administrators can deploy Visual Studio onto client workstations as part of an installation script. Or, users who have administrator rights can run setup directly from the share to install Visual Studio on their machine. 
 
 * Users can manually install the product from a network layout by running the following command:
 
@@ -404,6 +378,8 @@ Administrators can deploy Visual Studio onto client workstations as part of an i
     \\server\products\VS\vs_enterprise.exe --quiet --wait --norestart
     ```
 
+Make sure that either the user or system account that's running the installation has proper access to the network share that contains the layout. For more information, refer to [Troubleshoot network-related errors when you install or use Visual Studio](troubleshooting-network-related-errors-in-visual-studio.md).
+
 > [!NOTE] 
 > Be patient. Make sure you `--wait` for both the installer and the product to finish. When installing or updating a client from a layout, the installer is always the first thing to get installed or updated, and then the Visual Studio product itself will get installed or updated. **Both** of these processes need to finish in order to be considered a successful update.   
 >
@@ -416,42 +392,23 @@ When you install from a layout, the content that is installed will default to be
 > [!IMPORTANT]
 > The `--noWeb` option does not stop the Visual Studio installer on an internet-connected client machine from _checking_ for updates if the client has been configured to look at Microsoft hosted servers for updates. Rather, `--noWeb` simply prevents the client from downloading the product packages. For more information, see the [Update a Visual Studio client that was installed from a network layout](update-a-network-installation-of-visual-studio.md) page.
 
-::: moniker range=">=vs-2019"
-
 If you get an error message that says "A product matching the following parameters cannot be found", make sure that you are using the `--noweb` switch.
-
-::: moniker-end
 
 ### Configure initial client installation defaults for this layout
 
-You can modify some files in the layout folder to set default values that are used when the product is initially installed on the client machine. Common configuration options include:
+You can modify the response.json file in the layout folder to set default values for when the product is initially installed on the client machine. Common configuration options include:
 
 - Ability to **configure which workloads, components, or languages should be selected by default** during initial install. 
-- Ability to specify **where the client should receive updates from**.  Options are from the admin-controlled network layout location or from Microsoft hosted servers on the internet (which is the default).
+- Ability to specify **where the client should receive updates from**. Examples include the default Microsoft hosted servers on the internet or from an admin-controlled network layout location.
 
 For more information about how to customize and configure the default client settings for the layout, see [Automate Visual Studio installation with a response file](automated-installation-with-response-file.md).  
 
-### Configure enterprise deployment behavior
+### Configure policies for enterprise deployment behavior
 
-::: moniker range=">=vs-2019"
+You can also control other enterprise deployment behavior such as installation, update, and download behavior, administrator update behavior, how layouts appear in the **Update Settings** dialog, and notification behavior.  
 
-You can also control other enterprise deployment behavior, such as:
+Refer to [Configure policies for enterprise deployments of Visual Studio](set-defaults-for-enterprise-deployments.md) for additional details.
 
-- If administrator updates should be enabled and how they should be applied.
-- Which update channels are available and how network layouts appear to the client machines in the Update Settings dialog.
-- Where shared packages are installed.
-- Where and whether packages are cached.
-- How notifications appear or don't appear.
-
-Refer to [Set defaults for enterprise deployments of Visual Studio](set-defaults-for-enterprise-deployments.md) for additional details.
-
-::: moniker-end
-
-::: moniker range="vs-2017"
-
-You can also control other enterprise deployment behavior, such as where shared packages are installed. Refer to [Set defaults for enterprise deployments of Visual Studio](set-defaults-for-enterprise-deployments.md) for additional details.
-
-::: moniker-end
 
 ### Error codes
 
@@ -461,7 +418,7 @@ If you used the `--wait` parameter, then depending on the result of the operatio
 
 ### Get support for your network layout
 
-If you experience a problem with your network layout, we want to know about it. The best way to tell us is by using the [Report a Problem](../ide/how-to-report-a-problem-with-visual-studio.md) tool that appears both in the Visual Studio Installer and in the Visual Studio IDE. If you're an IT Administrator and don't have Visual Studio installed, you can submit [**IT Admin feedback here**](https://aka.ms/vs/admin/guide). When you use this tool, it would be very helpful if you could send the logs from the [VS Collect tool](https://aka.ms/vscollect) which can help us diagnose and fix the problem.
+If you experience a problem with your network layout, we want to know about it. The best way to tell us is by using the [Report a Problem](../ide/how-to-report-a-problem-with-visual-studio.md) tool that appears both in the Visual Studio Installer and in the Visual Studio IDE. If you're an IT Administrator and don't have Visual Studio installed, you can submit [**IT Admin feedback here**](https://aka.ms/vs/admin/feedback). When you use this tool, it would be very helpful if you could send the logs by the [VS Collect tool](https://aka.ms/vscollect) which can help us diagnose and fix the problem.
 
 We also offer an [**installation chat**](https://visualstudio.microsoft.com/vs/support/#talktous) (English only) support option for installation-related issues.
 
@@ -473,8 +430,8 @@ We have other support options available, too. See our [Visual Studio Developer C
 - [Update a network-based installation of Visual Studio](update-a-network-installation-of-visual-studio.md)
 - [Troubleshoot network-related errors when you install or use Visual Studio](troubleshooting-network-related-errors-in-visual-studio.md)
 - [Control updates to network-based Visual Studio deployments](controlling-updates-to-visual-studio-deployments.md)
-- [Visual Studio product lifecycle and servicing](/visualstudio/releases/2019/servicing/)
-- [Update Visual Studio while on a servicing baseline](update-servicing-baseline.md)
+- [Configure policies for enterprise deployments of Visual Studio](set-defaults-for-enterprise-deployments.md) 
+- [Visual Studio product lifecycle and servicing](/visualstudio/productinfo/vs-servicing/)
 - [Use command-line parameters to install Visual Studio](use-command-line-parameters-to-install-visual-studio.md)
 - [Visual Studio workload and component IDs](workload-and-component-ids.md)
 - [Install certificates required for Visual Studio offline installation](install-certificates-for-visual-studio-offline.md)
